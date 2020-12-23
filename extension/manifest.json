@@ -1,0 +1,45 @@
+{
+    "manifest_version": 2,
+    "name": "Didactic Barnacle",
+    "version": "0.1",
+    "author": "Flora GC, Simon Belbeoch",
+    "description": "Browsers' extensions (Chrome and Firefox based) to display dev environments",
+    "options_ui": {
+        "page": "src/settings/settings.html"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "didactic@barnacle"
+        }
+    },
+    "icons": {
+        "16": "icons/icon-16.png",
+        "32": "icons/icon-32.png",
+        "48": "icons/icon-48.png",
+        "64": "icons/icon-64.png"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": {
+            "16": "icons/icon-16.png",
+            "32": "icons/icon-32.png",
+            "48": "icons/icon-48.png",
+            "64": "icons/icon-64.png"
+        },
+        "default_title": "didactic-barnacle"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/common.js",
+                "src/core/config.js",
+                "src/core/main.js"
+            ]
+        }
+    ]
+}
