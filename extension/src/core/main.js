@@ -23,9 +23,10 @@ const add_ribbon = ({ detail: config }) => {
 
   let CSS = `#env-ribbon {
         font-weight: bolder;
+        box-shadow: 0 0 5px; 
+        height: 3rem;
         letter-spacing: 8px;
         line-height: 3rem;
-        height: 3rem;
         position: fixed;
         right: -55px;
         text-align: center;
