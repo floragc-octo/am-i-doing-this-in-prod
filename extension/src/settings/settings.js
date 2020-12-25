@@ -1,7 +1,9 @@
-const defaultSetting = { config: [] }
-const _numberOfElement = () => document.getElementById('input-form-container').childElementCount
+let currentURL = null
 
-function _createInput({ value, name, id, type }) {
+const defaultSetting = {config: []}
+const _numberOfElement = () => document.getElementById('config-setter').childElementCount
+
+const _createInput = ({value, name, id, type}) => {
     const label = document.createElement('label')
     const input = document.createElement('input')
     const container = document.createElement('span')
@@ -18,7 +20,6 @@ function _createInput({ value, name, id, type }) {
 
 const saveSettings = () => {
     store.set({ config: getAllEnv() })
-    Promise.resolve()
 }
 
 const removeEnv = ({ target }) => {
@@ -27,8 +28,10 @@ const removeEnv = ({ target }) => {
     parent.removeChild(elementToDelete)
 }
 
-const addEnv = ({ site = "localhost", color = "#CCCCCC", label = "ENV" }, id = _numberOfElement()) => {
-    const form = document.getElementById('input-form-container')
+const addEnv = (
+    {site = currentURL || "localhost", color = "#CCCCCC", label = "ENV"},
+    id = _numberOfElement()) => {
+    const form = document.getElementById('cs-container')
     const env = document.createElement('fieldset')
     const removeButton = document.createElement('button')
     removeButton.type = "button"
@@ -60,14 +63,21 @@ const addEnv = ({ site = "localhost", color = "#CCCCCC", label = "ENV" }, id = _
     labelElement.children[1].size = 10
     siteElement.style = "display: block;"
     siteElement.children[1].size = 30
-    env.style = "background-color: " + color + "40"
+    env.style = `background-color: ${color}40`
 
     env.appendChild(labelElement)
     env.appendChild(colorElement)
     env.appendChild(siteElement)
     env.appendChild(removeButton)
-    form.appendChild(env)
+    form.insertBefore(env, form.firstChild)
 }
+
+const getPageURL = async () =>
+    new Promise(resolve =>
+        chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => resolve(new URL(tabs[0].url).host))
+    )
+
+const setPageUrl = async () => { currentURL = await getPageURL() }
 
 const getConfiguration = (dom_element, i) => {
     const site = dom_element.querySelector("[field=site]").value
@@ -77,27 +87,36 @@ const getConfiguration = (dom_element, i) => {
         site,
         label,
         color,
-        id: `a${i}`
+        id: `a${i}`,
     }
 }
 
 const getAllEnv = () => {
-    const configuration_dom_dom_list = document.querySelectorAll('#input-form-container fieldset')
+    const configuration_dom_dom_list = document.querySelectorAll('#cs-container fieldset')
     const configuration_dom_list = Array.prototype.slice.call(configuration_dom_dom_list)
-    const configuration_list = configuration_dom_list.map((configuration_dom, i) => getConfiguration(configuration_dom, i))
-    return configuration_list
+    return configuration_dom_list.map((configuration_dom, i) => getConfiguration(configuration_dom, i))
 }
 
-const userSettings = (settings) => {
-    const { ribbon_color } = settings
-    ribbonColorDOM.value = ribbon_color
-}
-
-const retrieveSettings = () => store.get(defaultSetting, ({ config }) => {
+const loadSettingsFromStorageAndDisplay = () => store.get(defaultSetting, ({config}) => {
     config.forEach((configuration, index) => addEnv(configuration, index))
 })
 
+const retrieveSettingsFromFile = () => {
+    const fr = new FileReader()
+    fr.readAsText(document.getElementById("cr-file").files[0])
+    fr.onload = () => JSONtoSettings(fr.result)
+}
+
+const JSONtoSettings = (textFile) => {
+    const values = JSON.parse(textFile)
+    values.map(value => addEnv(value))
+    saveSettings()
+}
+
 // DOM event listeners
-document.addEventListener('DOMContentLoaded', retrieveSettings)
-document.getElementById('custom-form').addEventListener('submit', saveSettings)
+document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
+document.getElementById('config-setter').addEventListener('submit', saveSettings)
+document.getElementById('config-retriever').addEventListener('submit', retrieveSettingsFromFile)
 document.getElementById('add-env').addEventListener('click', addEnv)
+
+setPageUrl()

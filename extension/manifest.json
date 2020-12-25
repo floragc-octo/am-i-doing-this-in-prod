@@ -20,7 +20,8 @@
         "64": "icons/icon-64.png"
     },
     "permissions": [
-        "storage"
+        "storage",
+        "tabs"
     ],
     "browser_action": {
         "default_icon": {

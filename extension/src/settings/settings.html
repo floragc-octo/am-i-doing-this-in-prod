@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Didactic Barnacle</title>
@@ -7,14 +7,22 @@
 </head>
 
 <body>
-    <button type="button" id="add-env">Add a new environment</button>
-    <form id="custom-form">
-        <fieldset>
-            <legend>Change settings</legend>
-            <div id="input-form-container"></div>
-            <button type="submit" id="form">Save</button>
-        </fieldset>
-    </form>
+<button type="button" id="add-env">Add a new environment</button>
+<form id="config-setter">
+    <fieldset>
+        <legend>Change settings</legend>
+        <div id="cs-container"></div>
+        <button type="submit" id="form">Save</button>
+    </fieldset>
+</form>
+
+<form id="config-retriever">
+    <fieldset>
+        <legend>Retrieve settings from JSON file</legend>
+        <input id="cr-file" type="file" accept=".json" />
+        <button type="submit" id="cr-submit">Save</button>
+    </fieldset>
+</form>
 </body>
 <script src="../common.js"></script>
 <script src="settings.js"></script>
