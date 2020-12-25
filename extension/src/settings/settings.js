@@ -1,16 +1,10 @@
 const defaultSetting = { config: [] }
-const ribbonColorDOM = document.getElementById('ribbon-color')
+const _numberOfElement = () => document.getElementById('input-form-container').childElementCount
 
-const saveSettings = () => {
-    store.set({ config: getAllEnv() })
-
-    Promise.resolve()
-}
-
-function _create_input({ value, name, id, type }) {
+function _createInput({ value, name, id, type }) {
     const label = document.createElement('label')
     const input = document.createElement('input')
-    const container = document.createElement('div')
+    const container = document.createElement('span')
     label.htmlFor = name + id
     label.innerText = name
     input.setAttribute('field', name)
@@ -21,57 +15,61 @@ function _create_input({ value, name, id, type }) {
     container.appendChild(input)
     return container
 }
-const _number_of_element = () => document.getElementById('input-form-container').childElementCount
-const _updateLegendValue = ({ target }) => {
-    const { value } = target
-    target.parentNode.parentNode.children[0].innerText = value
+
+const saveSettings = () => {
+    store.set({ config: getAllEnv() })
+    Promise.resolve()
 }
 
 const removeEnv = ({ target }) => {
     const elementToDelete = target.parentNode
     const parent = elementToDelete.parentNode
     parent.removeChild(elementToDelete)
-} 
+}
 
-const addEnv = ({ site = "http://google.com", color = "black", label = "newenv" }, id = _number_of_element()) => {
+const addEnv = ({ site = "localhost", color = "#CCCCCC", label = "ENV" }, id = _numberOfElement()) => {
     const form = document.getElementById('input-form-container')
     const env = document.createElement('fieldset')
-    const legend = document.createElement('legend')
     const removeButton = document.createElement('button')
     removeButton.type = "button"
+    removeButton.className = "remove-button"
     removeButton.innerText = "X"
 
     removeButton.onclick = removeEnv
-    legend.textContent = label
 
-    const colorElement = _create_input({
+    const colorElement = _createInput({
         value: color,
         name: "color",
         id,
         type: "color",
     })
-    const siteElement = _create_input({
+    const siteElement = _createInput({
         value: site,
         name: "site",
         id,
         type: "text",
     })
-    const labelElement = _create_input({
+    const labelElement = _createInput({
         value: label,
         name: "label",
         id,
         type: "text",
     })
-    labelElement.onkeyup = _updateLegendValue
 
-    env.appendChild(legend)
+    labelElement.children[1].maxLength = 10
+    labelElement.children[1].size = 10
+    siteElement.style = "display: block;"
+    siteElement.children[1].size = 30
+    env.style = "background-color: " + color + "40"
+
     env.appendChild(labelElement)
-    env.appendChild(siteElement)
     env.appendChild(colorElement)
+    env.appendChild(siteElement)
     env.appendChild(removeButton)
     form.appendChild(env)
 }
-const get_configuration = (dom_element, i) => {
+
+const getConfiguration = (dom_element, i) => {
     const site = dom_element.querySelector("[field=site]").value
     const label = dom_element.querySelector("[field=label]").value
     const color = dom_element.querySelector("[field=color]").value
@@ -82,23 +80,22 @@ const get_configuration = (dom_element, i) => {
         id: `a${i}`
     }
 }
+
 const getAllEnv = () => {
     const configuration_dom_dom_list = document.querySelectorAll('#input-form-container fieldset')
     const configuration_dom_list = Array.prototype.slice.call(configuration_dom_dom_list)
-    const configuration_list = configuration_dom_list.map((configuration_dom, i) => get_configuration(configuration_dom, i))
+    const configuration_list = configuration_dom_list.map((configuration_dom, i) => getConfiguration(configuration_dom, i))
     return configuration_list
 }
-// Getting user's settings' values
+
 const userSettings = (settings) => {
     const { ribbon_color } = settings
     ribbonColorDOM.value = ribbon_color
 }
-const retrieveSettings = () => store.get(defaultSetting, ({ config }) => config.forEach((configuration, index) => addEnv(configuration, index)))
 
-const defaultSettings = () => {
-    const { ribbon_color } = defaultSetting
-    ribbonColorDOM.value = ribbon_color
-}
+const retrieveSettings = () => store.get(defaultSetting, ({ config }) => {
+    config.forEach((configuration, index) => addEnv(configuration, index))
+})
 
 // DOM event listeners
 document.addEventListener('DOMContentLoaded', retrieveSettings)

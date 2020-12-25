@@ -5,7 +5,8 @@
     "author": "Flora GC, Simon Belbeoch",
     "description": "Browsers' extensions (Chrome and Firefox based) to display dev environments",
     "options_ui": {
-        "page": "src/settings/settings.html"
+        "page": "src/settings/settings.html",
+        "open_in_tab": true
     },
     "browser_specific_settings": {
         "gecko": {
@@ -28,7 +29,8 @@
             "48": "icons/icon-48.png",
             "64": "icons/icon-64.png"
         },
-        "default_title": "didactic-barnacle"
+        "default_title": "didactic-barnacle",
+        "default_popup": "src/settings/settings.html"
     },
     "content_scripts": [
         {

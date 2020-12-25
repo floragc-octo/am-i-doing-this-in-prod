@@ -3,31 +3,18 @@
 
 <head>
     <title>Didactic Barnacle</title>
-    <style>
-        body {
-            background-color: #F2F2F2;
-            font: 0.8em "trebuchet MS", sans-serif;
-        }
-
-        fieldset {
-            border-color: #000;
-            margin-top: 0.4em;
-        }
-
-        button,
-        label, input {
-            display: inline-block;
-            margin: 0.5em 0.2em;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./settings.css" media="all" />
 </head>
 
 <body>
+    <button type="button" id="add-env">Add a new environment</button>
     <form id="custom-form">
-        <div id="input-form-container"></div>
-        <button type="submit" id="form">Save</button>
+        <fieldset>
+            <legend>Change settings</legend>
+            <div id="input-form-container"></div>
+            <button type="submit" id="form">Save</button>
+        </fieldset>
     </form>
-    <button type="button" id="add-env">Add env</button>
 </body>
 <script src="../common.js"></script>
 <script src="settings.js"></script>
