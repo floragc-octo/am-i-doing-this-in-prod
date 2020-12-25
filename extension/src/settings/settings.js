@@ -101,6 +101,16 @@ const loadSettingsFromStorageAndDisplay = () => store.get(defaultSetting, ({conf
     config.forEach((configuration, index) => addEnv(configuration, index))
 })
 
+const updateExportLink = () => {
+    const dataStr = JSON.stringify(getAllEnv())
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr)
+    const exportFileDefaultName = 'didacticbarnacle_export.json'
+
+    const link = document.getElementById("cs-export")
+    link.href = dataUri
+    link.download = exportFileDefaultName
+}
+
 const retrieveSettingsFromFile = () => {
     const fr = new FileReader()
     fr.readAsText(document.getElementById("cr-file").files[0])
@@ -118,5 +128,6 @@ document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
 document.getElementById('config-setter').addEventListener('submit', saveSettings)
 document.getElementById('config-retriever').addEventListener('submit', retrieveSettingsFromFile)
 document.getElementById('add-env').addEventListener('click', addEnv)
+document.getElementById('cs-export').addEventListener('click', updateExportLink)
 
 setPageUrl()

@@ -16,11 +16,18 @@
     </fieldset>
 </form>
 
+<form id="config-saver">
+    <fieldset>
+        <legend>Save setting to JSON file</legend>
+        <a role="button" id="cs-export" href="">Export to JSON</a>
+    </fieldset>
+</form>
+
 <form id="config-retriever">
     <fieldset>
         <legend>Retrieve settings from JSON file</legend>
         <input id="cr-file" type="file" accept=".json" />
-        <button type="submit" id="cr-submit">Save</button>
+        <button type="submit" id="cr-submit">Load and save</button>
     </fieldset>
 </form>
 </body>
