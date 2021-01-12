@@ -9,7 +9,7 @@ const COLOR_INPUT = {
 }
 const SITE_INPUT = {
     field: "site",
-    size: 25,
+    size: 50,
     type: "text",
 }
 const LABEL_INPUT = {
@@ -107,7 +107,6 @@ const retrieveSettingsFromFile = (event) => {
         fr.onload = () => loadAndSave(fr.result)
         const result = fr.readAsText(file.files[0])
     }
-    return false
 }
 
 const loadAndSave = result => {

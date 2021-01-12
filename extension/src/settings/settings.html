@@ -8,33 +8,37 @@
 </head>
 
 <body>
-<header>Didactic Barnacle</header>
-<main>
-    <button type="button" id="add-env">Add current page to env</button>
-    <div class="legend">Change settings</div>
-    <section>
-        <span class="section-instruction">Max label size is <b>10 characters</b><br />Site can be a part of the url</span>
-        <form id="config-setter">
-            <div id="cs-container"></div>
-            <button type="submit" id="form">Save</button>
-        </form>
-    </section>
-    <div class="legend">Save setting to JSON file</div>
-    <section>
-        <form id="config-saver">
+    <h1>Didactic Barnacle</h1>
+    <main>
+        <button type="button" id="add-env">Add current page to env</button>
+        <header>Change settings</header>
+        <section>
+            <span class="section-instruction">
+                <span class="line">
+                    Max label size is <strong>10 characters</strong>
+                </span>
+                <span class="line">
+                    Site can be a part of the url (50 chars max)</span>
+            </span>
+            <form id="config-setter">
+                <div id="cs-container"></div>
+                <button type="submit" id="cs-form">Save</button>
+            </form>
+        </section>
+        <header>Save setting to JSON file</header>
+        <section>
             <a role="button" id="cs-export" href="">Export to JSON</a>
-        </form>
-    </section>
-    <div class="legend">Retrieve settings from JSON file</div>
-    <section>
-        <span class="section-instruction">Configuration loaded will be added to the existing configuration</span>
-        <form id="config-retriever">
-            <label for="cr-file">Choose a file</label>
-            <input id="cr-file" type="file" accept=".json" />
-            <button type="submit" id="cr-submit">Load and save</button>
-        </form>
-    </section>
-</main>
+        </section>
+        <header>Retrieve settings from JSON file</header>
+        <section>
+            <span class="section-instruction">Configuration loaded will be added to the existing configuration</span>
+            <form id="config-retriever">
+                <label for="cr-file">Choose a file</label>
+                <input id="cr-file" type="file" accept=".json" />
+                <button type="submit" id="cr-submit">Load and save</button>
+            </form>
+        </section>
+    </main>
 </body>
 
 <script src="../common.js"></script>

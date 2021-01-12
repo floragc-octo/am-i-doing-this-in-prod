@@ -1,11 +1,13 @@
+/* structure */
+
 body {
     background-color: #F7F7F7;
     font: 0.8em "trebuchet MS", sans-serif;
     margin: auto;
-    max-width: 600px;
+    max-width: 800px;
 }
 
-header {
+h1 {
     background-color: #5DADE2;
     border-bottom: 1px solid #3498DB;
     color: #fff;
@@ -28,25 +30,40 @@ section {
     font-style: italic;
 }
 
-.legend {
+.section-instruction .line {
+    display: block;
+}
+
+header {
     color: #85929E;
     font-size: 1.1em;
     padding: 5px 10px;
     text-transform: uppercase;
 }
 
+/* forms */
+
 button, a {
     background-color: #A3E4D7;
     border: 1px solid #1ABC9C;
     border-radius: 5px;
     color: #117A65;
+    display: inline-block;
 }
 
-a {
-    display: inline-block;
-    margin: 5px;
+a#cs-export {
+    line-height: 21px;
     padding: 2px 5px;
     text-decoration: none;
+}
+
+a,
+button,
+label,
+input {
+    display: inline-block;
+    height: 21px;
+    margin: 0.5em 0.2em;
 }
 
 button:focus, button:hover, a:focus, a:hover {
@@ -54,6 +71,17 @@ button:focus, button:hover, a:focus, a:hover {
     border: 1px solid #1ABC9C;
     color: #117A65;
     cursor: pointer;
+}
+
+input[type="color"] {
+    width: 21px;
+}
+
+input[type="file"] {
+    background-color: #FFF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #117A65;
 }
 
 label {
@@ -67,27 +95,8 @@ fieldset {
     position: relative;
 }
 
-button,
-label,
-input {
-    display: inline-block;
-    height: 21px;
-    margin: 0.5em 0.2em;
-}
-
 #config-retriever > label {
     display: inline;
-}
-
-input[type="color"] {
-    width: 21px;
-}
-
-input[type="file"] {
-    background-color: #FFF;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #117A65;
 }
 
 .remove-button {
