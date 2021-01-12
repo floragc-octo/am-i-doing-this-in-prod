@@ -1,6 +1,6 @@
 let currentURL = null
 
-const defaultSetting = {config: []}
+const defaultSetting = { config: [] }
 const _numberOfElement = () => document.getElementById('cs-container').childElementCount
 
 const COLOR_INPUT = {
@@ -9,7 +9,7 @@ const COLOR_INPUT = {
 }
 const SITE_INPUT = {
     field: "site",
-    size: 30,
+    size: 50,
     type: "text",
 }
 const LABEL_INPUT = {
@@ -38,12 +38,12 @@ const _createInput = (params) => {
     const { field, i } = params
     const id = field + i
     const container = createElement('span')
-    container.appendChild(createElement('label', { htlmFor: id, innerText: field }))
+    container.appendChild(createElement('label', { for: id, innerText: field }))
     container.appendChild(createElement('input', { ...params, id }))
     return container
 }
 
-const saveSettings = ({ config = generateConfiguration() }) => {
+const saveSettings = ({ config = generateConfiguration() } = {}) => {
     store.set({ config })
 }
 
@@ -55,11 +55,12 @@ const removeEnv = ({ target }) => {
 
 const addEnv = (
     { site = currentURL, color = "#CCCCCC", label = "ENV LABEL" },
-    i = _numberOfElement()) => {
-    const form = document.getElementById('cs-container')
-    const env = createElement('fieldset', { style: `background-color: ${color}40`})
-    const removeButton = createElement('button',{ ...REMOVE_BUTTON, onclick: removeEnv })
-    const colorElement = _createInput({ ...COLOR_INPUT,  value: color, i })
+    i = _numberOfElement()
+) => {
+    const form = document.querySelector('#cs-container')
+    const env = createElement('fieldset', { style: `background-color: ${color}40` })
+    const removeButton = createElement('button', { ...REMOVE_BUTTON, onclick: removeEnv })
+    const colorElement = _createInput({ ...COLOR_INPUT, value: color, i })
     const siteElement = _createInput({ ...SITE_INPUT, value: site, i })
     const labelElement = _createInput({ ...LABEL_INPUT, value: label, i })
     siteElement.style = "display: block;"
@@ -68,7 +69,7 @@ const addEnv = (
 }
 
 const getPageURL = async () => new Promise(resolve =>
-    chrome.tabs.query({active: true}, tabs => resolve(new URL(tabs[0].url).host))
+    chrome.tabs.query({ active: true }, tabs => resolve(new URL(tabs[0].url).host))
 )
 
 const setPageUrl = async () => { currentURL = await getPageURL() }
@@ -84,14 +85,13 @@ const domToList = (domList) => Array.prototype.slice.call(domList)
 const getEnvList = () => domToList(document.querySelectorAll('#cs-container fieldset'))
 const generateConfiguration = () => getEnvList().map((env, i) => generateConfigurationLine(env, i))
 
-const loadSettingsFromStorageAndDisplay = () => store.get(defaultSetting, ({config}) => {
+const loadSettingsFromStorageAndDisplay = () => store.get(defaultSetting, ({ config }) => {
     config.forEach((configuration, index) => addEnv(configuration, index))
 })
 
 const updateExportLink = () => {
-    console.log('coucou')
     const dataStr = JSON.stringify(generateConfiguration())
-    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr)
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr)
     const exportFileDefaultName = 'didacticbarnacle_export.json'
 
     const link = document.querySelector("#cs-export")
@@ -99,23 +99,33 @@ const updateExportLink = () => {
     link.download = exportFileDefaultName
 }
 
-const retrieveSettingsFromFile = () => {
+const retrieveSettingsFromFile = (event) => {
+    event.preventDefault()
     const fr = new FileReader()
-    fr.readAsText(document.getElementById("cr-file").files[0])
-    fr.onload = () => JSONtoSettings(fr.result)
+    const file = document.querySelector("#cr-file")
+    if (file.files[0]) {
+        fr.onload = () => loadAndSave(fr.result)
+        const result = fr.readAsText(file.files[0])
+    }
+}
+
+const loadAndSave = result => {
+    JSONtoSettings(result)
+    saveSettings()
 }
 
 const JSONtoSettings = (textFile) => {
     const values = JSON.parse(textFile)
-    values.map(value => addEnv(value))
-    saveSettings()
+    values.map(value => {
+        addEnv(value)
+    })
 }
 
 // DOM event listeners
 document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
-document.getElementById('config-setter').addEventListener('submit', saveSettings)
-document.getElementById('config-retriever').addEventListener('submit', retrieveSettingsFromFile)
-document.getElementById('add-env').addEventListener('click', addEnv)
-document.getElementById('cs-export').addEventListener('click', updateExportLink)
+document.querySelector('#config-setter').addEventListener('submit', saveSettings)
+document.querySelector('#config-retriever').addEventListener('submit', retrieveSettingsFromFile)
+document.querySelector('#add-env').addEventListener('click', addEnv)
+document.querySelector('#cs-export').addEventListener('click', updateExportLink)
 
 setPageUrl()

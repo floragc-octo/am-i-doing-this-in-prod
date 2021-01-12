@@ -1,32 +1,106 @@
+/* structure */
+
 body {
-    background-color: #fff;
+    background-color: #F7F7F7;
     font: 0.8em "trebuchet MS", sans-serif;
-    max-width: 600px;
     margin: auto;
+    max-width: 800px;
 }
 
-fieldset {
-    margin-top: 0.4em;
+h1 {
+    background-color: #5DADE2;
+    border-bottom: 1px solid #3498DB;
+    color: #fff;
+    font-size: 1.3em;
+    padding: 10px;
+    text-align: center;
+}
+
+section {
+    background-color: #FFF;
+    border: 1px solid #E5E8E8;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+    padding: 5px;
     position: relative;
-    border: 1px solid black;
 }
 
-fieldset fieldset {
-    border: none;
-    margin: 1px 0;
+.section-instruction {
+    color: #BBB;
+    font-style: italic;
 }
 
+.section-instruction .line {
+    display: block;
+}
+
+header {
+    color: #85929E;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+/* forms */
+
+button, a {
+    background-color: #A3E4D7;
+    border: 1px solid #1ABC9C;
+    border-radius: 5px;
+    color: #117A65;
+    display: inline-block;
+}
+
+a#cs-export {
+    line-height: 21px;
+    padding: 2px 5px;
+    text-decoration: none;
+}
+
+a,
 button,
 label,
 input {
     display: inline-block;
+    height: 21px;
     margin: 0.5em 0.2em;
 }
-code {
-    display: block;
+
+button:focus, button:hover, a:focus, a:hover {
+    background-color: #76D7C4;
+    border: 1px solid #1ABC9C;
+    color: #117A65;
+    cursor: pointer;
 }
-.remove-button{
+
+input[type="color"] {
+    width: 21px;
+}
+
+input[type="file"] {
+    background-color: #FFF;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #117A65;
+}
+
+label {
+    text-transform: capitalize;
+    width: 30px;
+}
+
+fieldset {
+    border: none;
+    margin: 1px 0;
+    position: relative;
+}
+
+#config-retriever > label {
+    display: inline;
+}
+
+.remove-button {
     position: absolute;
-    top: 5px;
     right: 5px;
+    top: 5px;
 }
