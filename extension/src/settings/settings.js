@@ -53,6 +53,8 @@ const removeEnv = ({ target }) => {
     parent.removeChild(elementToDelete)
 }
 
+const addDefaultEnv = () => addEnv({ site: "localhost" , label: "DEFAULT" } )
+
 const addEnv = (
     { site = currentURL, color = "#CCCCCC", label = "ENV LABEL" },
     i = _numberOfElement()
@@ -126,6 +128,7 @@ document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
 document.querySelector('#config-setter').addEventListener('submit', saveSettings)
 document.querySelector('#config-retriever').addEventListener('submit', retrieveSettingsFromFile)
 document.querySelector('#add-env').addEventListener('click', addEnv)
+document.querySelector('#add-default-env').addEventListener('click', addDefaultEnv)
 document.querySelector('#cs-export').addEventListener('click', updateExportLink)
 
 setPageUrl()

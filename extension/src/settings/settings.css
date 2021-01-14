@@ -8,12 +8,13 @@ body {
 }
 
 h1 {
-    background-color: #5DADE2;
-    border-bottom: 1px solid #3498DB;
-    color: #fff;
+    background-color: #4D7B89;
+    border-bottom: 2px solid #E5E8E8;
+    color: #D1F2EB;
     font-size: 1.3em;
     padding: 10px;
     text-align: center;
+    margin: 0;
 }
 
 section {
@@ -39,6 +40,12 @@ header {
     font-size: 1.1em;
     padding: 5px 10px;
     text-transform: uppercase;
+}
+
+header ~ span {
+    color: #FF5689;
+    font-size: 0.9em;
+    padding: 5px 10px;
 }
 
 /* forms */
