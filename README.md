@@ -25,6 +25,8 @@ You can cut parts of the url as the extension only checks if the page's url cont
 For example, 
 > `testing.myapp.fr` will work for `www.backend.testing.myapp.fr`
 
+Don't forget to hit the save button ! 
+
 
 ### Export Settings
 
