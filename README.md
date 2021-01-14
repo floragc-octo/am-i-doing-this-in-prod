@@ -23,7 +23,7 @@ Once you're on the settings' page (see "Getting started")  you can click on "Add
 You can cut parts of the url as the extension only checks if the page's url contains the url specified. 
 
 For example, 
-> testing.myapp.fr will work for www.backend.testing.myapp.fr 
+> `testing.myapp.fr` will work for `www.backend.testing.myapp.fr`
 
 
 ### Export Settings
