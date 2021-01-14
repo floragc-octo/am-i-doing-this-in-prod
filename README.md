@@ -32,7 +32,7 @@ This extension will *maybe one day* :
 The extension comes with a settings page accessible from the plugin options or by clicking on the plugin's icon on your
 plugins' menu
 
-<img src="documentation/assets/menu_extension_icon.png" height="250"/>
+<img src="documentation/assets/menu_extension_icon.png" height="35"/>
 
 One you've installed the extension you can start to add pages/environment or import existing settings
 
