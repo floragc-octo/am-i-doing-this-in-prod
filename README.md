@@ -30,7 +30,7 @@ This extension will *maybe one day* :
 ## Getting Started
 
 The extension comes with a settings page accessible from the plugin options or by clicking on the plugin's icon on your
-plugins' menu
+plugins' menu (the left one on the screenshot below)
 
 <img src="documentation/assets/menu_extension_icon.png" height="35"/>
 
