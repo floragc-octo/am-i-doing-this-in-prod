@@ -1,67 +1,108 @@
 /* structure */
 
+html {
+    font-size: 100%;
+}
+
 body {
     background-color: #F7F7F7;
-    font: 0.8em "trebuchet MS", sans-serif;
+    color: rgba(0, 0, 0, .7);
+    font: 1rem BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
     margin: auto;
     max-width: 800px;
+    padding: 0.3rem;
+}
+
+main > button {
+    margin-left: 0.3rem;
 }
 
 h1 {
-    background-color: #4D7B89;
-    border-bottom: 2px solid #E5E8E8;
-    color: #D1F2EB;
+    background-color: #619b8a;
+    border-bottom: 5px solid #14213D;
+    color: #14213D;
     font-size: 1.3em;
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
-    margin: 0;
+    margin: 0 0 0.5rem;
 }
 
 section {
     background-color: #FFF;
-    border: 1px solid #E5E8E8;
-    margin-bottom: 0.2em;
+    border: 1px solid #14213D;
+    margin-bottom: 0.3rem;
     margin-top: 0.2em;
-    padding: 5px;
+    padding: 0.5rem;
     position: relative;
 }
 
-.section-instruction {
-    color: #BBB;
-    font-style: italic;
+.section-instruction .line:before {
+    content: ' ';
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z" fill="rgba(20,33,61,1)"/></svg>');
+    background-size: 12px 12px;
+    margin-right: 0.5rem;
+    height: 12px;
+    width: 12px;
 }
 
 .section-instruction .line {
-    display: block;
+    align-items: center;
+    background-color: #eef6fc;
+    border-radius: 5px;
+    color: #1d72aa;
+    display: flex;
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 0.3rem 0;
+    padding: 0.3rem 0.5rem;
 }
 
 header {
-    color: #85929E;
+    background-color: #619b8a20;
+    border-bottom: 5px solid #14213D;
+    color: #14213D;
     font-size: 1.1em;
-    padding: 5px 10px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
     text-transform: uppercase;
 }
 
-header ~ span {
+header:before {
+    content: '# ';
+}
+
+header > span.tips {
     color: #FF5689;
-    font-size: 0.9em;
-    padding: 5px 10px;
+    font-size: 0.7em;
+    font-style: italic;
+    text-transform: none;
 }
 
 /* forms */
 
-button, a {
-    background-color: #A3E4D7;
-    border: 1px solid #1ABC9C;
-    border-radius: 5px;
-    color: #117A65;
-    display: inline-block;
+a#cs-export {
+    text-decoration: none;
 }
 
-a#cs-export {
-    line-height: 21px;
-    padding: 2px 5px;
-    text-decoration: none;
+.remove-button {
+    border-radius: 0.5rem;
+    font-size: 0.8em;
+    padding: 0.3rem 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.1rem;
+}
+
+a, button {
+    background-color: #14213D;
+    border-color: transparent;
+    border-radius: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    justify-content: center;
+    padding: calc(.5em - 1px) 1em;
 }
 
 a,
@@ -69,45 +110,47 @@ button,
 label,
 input {
     display: inline-block;
-    height: 21px;
-    margin: 0.5em 0.2em;
+    font-size: 0.9em;
+    margin: 0.4rem 0;
 }
 
 button:focus, button:hover, a:focus, a:hover {
-    background-color: #76D7C4;
-    border: 1px solid #1ABC9C;
-    color: #117A65;
-    cursor: pointer;
+    background-color: #14213DCC;
+}
+
+section button {
+    display: block;
+}
+
+label {
+    color: #14213D;
+    font-weight: 500;
+    margin-left: 0.3rem;
+    text-transform: capitalize;
+    width: 40px;
+}
+
+input[type="text"] {
+    color: #666;
+    font-weight: 500;
+    padding: 0.3rem;
 }
 
 input[type="color"] {
-    width: 21px;
+    width: 40px;
 }
 
 input[type="file"] {
     background-color: #FFF;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     color: #117A65;
 }
 
-label {
-    text-transform: capitalize;
-    width: 30px;
-}
-
 fieldset {
-    border: none;
-    margin: 1px 0;
+    margin: 0.4rem 0;
+    padding: 0 0.2rem;
     position: relative;
 }
 
 #config-retriever > label {
     display: inline;
-}
-
-.remove-button {
-    position: absolute;
-    right: 5px;
-    top: 5px;
 }
