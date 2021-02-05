@@ -7,7 +7,7 @@ html {
 body {
     background-color: #F7F7F7;
     color: rgba(0, 0, 0, .7);
-    font: 1rem BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 1rem "Segoe UI", Helvetica, Arial, sans-serif;
     font-weight: 400;
     margin: auto;
     max-width: 800px;
@@ -15,54 +15,61 @@ body {
 }
 
 main > button {
-    margin-left: 0.3rem;
+    margin-right: 0.3rem;
 }
 
 h1 {
-    background-color: #619b8a;
-    border-bottom: 5px solid #14213D;
-    color: #14213D;
-    font-size: 1.3em;
-    padding: 1rem;
-    text-align: center;
+    border: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, rgba(86,69,157,1) 0%, rgba(42,157,143,1) 100%);
+    color: rgba(86,69,157,1);
+    font-size: 1.5em;
+    font-weight: bolder;
     margin: 0 0 0.5rem;
+    padding: 1rem;
+}
+
+@media (max-width: 500px) {
+    h1 {
+        background-color: rgba(86,69,157,0.5);
+        border: none;
+        color: rgb(25 18 54);
+        font-size: 1em;
+        margin: 0 auto 10px auto;
+        padding: 0.5em;
+    }
 }
 
 section {
     background-color: #FFF;
-    border: 1px solid #14213D;
     margin-bottom: 0.3rem;
     margin-top: 0.2em;
     padding: 0.5rem;
-    position: relative;
 }
 
-.section-instruction .line:before {
-    content: ' ';
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z" fill="rgba(20,33,61,1)"/></svg>');
-    background-size: 12px 12px;
-    margin-right: 0.5rem;
-    height: 12px;
-    width: 12px;
-}
-
-.section-instruction .line {
+.section-instruction {
     align-items: center;
-    background-color: #eef6fc;
+    background-color: #EEF6FC;
     border-radius: 5px;
-    color: #1d72aa;
+    color: #1D72AA;
     display: flex;
     font-size: 0.9em;
     font-style: italic;
     margin: 0.3rem 0;
     padding: 0.3rem 0.5rem;
 }
+.section-instruction ul {
+    margin-left: 0;
+    padding-left: 20px;
+}
 
 header {
-    background-color: #619b8a20;
-    border-bottom: 5px solid #14213D;
+    border-bottom: 5px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(90deg, rgba(86,69,157,1) 0%, rgba(42,157,143,1) 100%);
     color: #14213D;
     font-size: 1.1em;
+    font-weight: bold;
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
     text-transform: uppercase;
@@ -70,6 +77,16 @@ header {
 
 header:before {
     content: '# ';
+}
+
+header[title]:after {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z" fill="rgba(20,33,61,1)"/></svg>');
+    background-size: cover;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    margin-left: 0.5rem;
+    width: 16px;
 }
 
 header > span.tips {
@@ -95,14 +112,30 @@ a#cs-export {
 }
 
 a, button {
-    background-color: #14213D;
-    border-color: transparent;
     border-radius: 0.5rem;
-    color: #fff;
+    color: #FFF;
     cursor: pointer;
     font-size: 1rem;
     justify-content: center;
     padding: calc(.5em - 1px) 1em;
+}
+
+a.primary, button.primary {
+    background: rgb(86,69,157);
+    background: linear-gradient(90deg, rgba(86,69,157,1) 0%, rgba(60,46,119,0.8393732492997199) 100%);
+    border-color: transparent;
+    font-size: 1.1em;
+}
+
+.call-to-action {
+    display: block;
+    margin: auto;
+}
+
+a.secondary, button.secondary {
+    background: #FFF;
+    border: 1px solid rgba(86,69,157,1);
+    color:rgba(86,69,157,1);
 }
 
 a,
@@ -115,7 +148,8 @@ input {
 }
 
 button:focus, button:hover, a:focus, a:hover {
-    background-color: #14213DCC;
+    background-color: #56459dCC;
+    color: #FFF;
 }
 
 section button {
