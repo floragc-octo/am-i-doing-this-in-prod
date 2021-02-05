@@ -1,19 +1,19 @@
-# Didactic Barnacle - browser extension to display custom project environments
+# Browser extension to display custom project environments
 
-This extension display a ribbon on specific page in order to have a quick view of which environment you're in !
+This extension display a ribbon on specific pages in order to have a quick view of which environment you're in !
 
 <img src="documentation/assets/example.png" height="250"/>
 
 ---
 
-## What it does / What it needs to do
+## What does it do
 
 This extension allows to :
 
-* Add an env from a specific page and customize
-    * the url (to cut the unneeded parts),
-    * the ribbon's background color
-    * the label (max 10 characters)
+* Add an env from a specific page and customize the : 
+    * URL,
+    * Ribbon's background color
+    * Label (max 10 characters)
 * Add a default env and customize it
 * Export your configuration in JSON format (to share with your team, maybe)
 * Import a configuration 
@@ -29,12 +29,14 @@ This extension will *maybe one day* :
 
 ## Getting Started
 
-The extension comes with a settings page accessible from the plugin options or by clicking on the plugin's icon on your
+The settings page is accessible from the plugin options or by clicking on the plugin's icon on your
 plugins' menu (the left one on the screenshot below)
+
+(devnote: accessing the settings and changing colors from the icon's setting may be troublesome in Firefox)
 
 <img src="documentation/assets/menu_extension_icon.png" height="35"/>
 
-One you've installed the extension you can start to add pages/environment or import existing settings
+Once you have installed the extension you can start to add pages/environment or import existing settings
 
 ### Customize/Add an environment
 
@@ -43,7 +45,7 @@ Once you're on the settings' page (see "Getting started")  you can click on "Add
 You can cut parts of the url as the extension only checks if the page's url contains the url specified.
 
 For example,
-> `testing.myapp.fr` will work for `www.backend.testing.myapp.fr`
+> `testing.myapp` will work for `www.backend.testing.myapp.fr`
 
 Don't forget to hit the save button !
 
@@ -80,7 +82,7 @@ If you need to know the structure, it may look like this :
 
 ## Built With
 
-Vanilla JS only :)
+Vanilla JS only
 
 ---
 
@@ -95,7 +97,7 @@ with the participation of
 
 ## Versioning
 
-Not decided yet
+Work in Progress
 
 ---
 
