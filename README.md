@@ -52,7 +52,7 @@ Don't forget to hit the save button !
 
 ### Export Settings
 
-<img src="documentation/assets/settings.png" height="250"/>
+<img src="documentation/assets/settings.png" height="400"/>
 
 
 ### Import Settings
