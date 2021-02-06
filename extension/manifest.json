@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Didactic Barnacle",
+    "name": "Am I doing this in Prod ?",
     "version": "0.1",
     "author": "Flora GC, Simon Belbeoch",
     "description": "Browsers' extensions (Chrome and Firefox based) to display dev environments",

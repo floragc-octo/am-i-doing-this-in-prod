@@ -1,4 +1,4 @@
-# Browser extension to display custom project environments
+# Am I doing this in Prod ?
 
 This extension display a ribbon on specific pages in order to have a quick view of which environment you're in !
 

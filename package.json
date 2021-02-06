@@ -1,6 +1,6 @@
 {
-  "name": "didactic-tribble",
-  "version": "0.0.1",
+  "name": "didactic-barnacle",
+  "version": "0.1",
   "description": "Browsers' extension to highlight dev environment",
   "scripts": {
     "package": "zip -r extension.zip ./extension/*",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/floragc-octo/didactic-tribble.git"
+    "url": "git+https://github.com/floragc-octo/didactic-barnacle.git"
   },
   "keywords": [
     "extension",
@@ -18,11 +18,12 @@
     "starter"
   ],
   "author": "Flora GC",
+  "contributors": "Simon Belbeoch <simon.belbeoch@gmail.com> (https://github.com/LiquidITGuy)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/floragc-octo/didactic-tribble/issues"
+    "url": "https://github.com/floragc-octo/didactic-barnacle/issues"
   },
-  "homepage": "https://github.com/floragc-octo/didactic-tribble#readme",
+  "homepage": "https://github.com/floragc-octo/didactic-barnacle#readme",
   "devDependencies": {
     "eslint": "^7.16.0",
     "eslint-config-airbnb-base": "^14.2.1",
