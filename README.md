@@ -21,12 +21,6 @@ This extension allows to :
 This extension *lacks* :
 * a full support of Firefox (it's a little bit broken, see Issues)
 
-This extension will *soon* :
-* let you customize the ribbon font color (in the meantime don't choose a too light background color as the font color is white)
-
-This extension will *maybe one day* :
-* let you customize the ribbon design
-
 ## Getting Started
 
 The settings page is accessible from the plugin options or by clicking on the plugin's icon on your
