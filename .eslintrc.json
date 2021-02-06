@@ -4,9 +4,6 @@
         "es2021": true,
         "webextensions": true
     },
-    "globals": {
-        "store": true
-    },
     "extends": [
         "airbnb-base"
     ],

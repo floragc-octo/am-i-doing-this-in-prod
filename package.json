@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Browsers' extension to highlight dev environment",
   "scripts": {
-    "package": " zip -r extension.zip ./extension/*",
+    "package": "zip -r extension.zip ./extension/*",
     "build:firefox": "web-ext build --source-dir ./extension/",
     "lint": "eslint ./extension/src",
     "lint:fix": "eslint ./extension/src --fix"
