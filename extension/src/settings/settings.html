@@ -3,45 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Didactic Barnacle</title>
+    <title>Environments settings</title>
     <link rel="stylesheet" type="text/css" href="./settings.css" media="all" />
 </head>
 
 <body>
     <h1>Environments settings</h1>
     <main>
-        <button type="button" id="add-env">Add current page to env</button>
-        <button type="button" id="add-default-env">Create a new env</button>
-        <header>Retrieve settings from JSON file</header>
+        <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
+        <header class="instructions"
+                title="The configuration will be added to the existing one.
+                        Must be a json file">
+            Retrieve settings from file
+        </header>
         <section>
-            <span class="section-instruction">
-                <span class="line">Configuration loaded will be added to the existing configuration</span>
-                </span>
             <form id="config-retriever">
-                <label for="cr-file">Choose a file</label>
-                <input id="cr-file" type="file" accept=".json" />
-                <button type="submit" id="cr-submit">Load and save</button>
+                <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json" />
+                <button type="submit" id="cr-submit" class="secondary">Load and save</button>
+            </form>
+        </section>
+        <header>Change settings <span class="tips">(don't forget to save !)</span></header>
+        <section>
+            <button type="button" id="add-default-env" class="secondary">Create a new env</button>
+            <span class="section-instruction">
+                <ul>
+                    <li>Label size is 10 characters max</li>
+                    <li>Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</li>
+                </ul>
+            </span>
+            <form id="config-setter">
+                <div id="cs-container"></div>
+                <button type="submit" id="cs-form" class="secondary">Save settings</button>
             </form>
         </section>
         <header>Save setting to JSON file</header>
         <section>
-            <a role="button" id="cs-export" href="" tabindex="0">Export to JSON</a>
+            <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export to JSON</a>
         </section>
-        <header>Change settings <span class="tips">(don't forget to save !)</span></header>
-        <section>
-            <span class="section-instruction">
-                <span class="line">
-                    Label size is 10 characters max
-                </span>
-                <span class="line">
-                    Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</span>
-            </span>
-            <form id="config-setter">
-                <div id="cs-container"></div>
-                <button type="submit" id="cs-form">Save</button>
-            </form>
-        </section>
-
     </main>
 </body>
 <script src="settings.js"></script>

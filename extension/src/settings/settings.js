@@ -20,7 +20,7 @@ const LABEL_INPUT = {
 }
 const REMOVE_BUTTON = {
   type: 'button',
-  className: 'remove-button',
+  className: 'remove-button secondary',
   innerText: 'X',
 }
 
@@ -72,7 +72,7 @@ const addEnv = (
   i = _numberOfElement(),
 ) => {
   const form = document.querySelector('#cs-container')
-  const env = createElement('fieldset', { style: `border: 1px solid ${color}; border-left: 5px solid ${color}; background-color: ${color}20` })
+  const env = createElement('fieldset', { style: `border: 2px solid ${color}; background-color: ${color}20` })
   const removeButton = createElement('button', { ...REMOVE_BUTTON, onclick: removeEnv })
   const colorElement = _createInput({ ...COLOR_INPUT, value: color, i })
   const siteElement = _createInput({ ...SITE_INPUT, value: site, i })
