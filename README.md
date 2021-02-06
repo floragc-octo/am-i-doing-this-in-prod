@@ -1,5 +1,7 @@
 # Am I doing this in Prod ?
 
+Have you ever come close to create a silly product on production while thinking you were on your testing tab ?
+
 This extension display a ribbon on specific pages in order to have a quick view of which environment you're in !
 
 <img src="documentation/assets/example.png" height="250"/>
@@ -32,6 +34,8 @@ plugins' menu (the left one on the screenshot below)
 
 Once you have installed the extension you can start to add pages/environment or import existing settings
 
+<img src="documentation/assets/settings.png" height="400"/>
+
 ### Customize/Add an environment
 
 Once you're on the settings' page (see "Getting started")  you can click on "Add current page to env" or "Create a new env"
@@ -46,8 +50,7 @@ Don't forget to hit the save button !
 
 ### Export Settings
 
-<img src="documentation/assets/settings.png" height="400"/>
-
+You'll get a json file with your settings.
 
 ### Import Settings
 
