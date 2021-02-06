@@ -1,24 +1,24 @@
 const MAXIMUM_Z_INDEX = 2147483647
-const generate_css = ({ color, id }) => `#env-ribbon.${id} { background-color: ${color}; }`
+const generateCss = ({ color, id }) => `#env-ribbon.${id} { background-color: ${color}; }`
 
-const add_ribbon = ({ detail: config }) => {
-  ribbon = document.createElement("div")
+const addRibbon = ({ detail: configuration }) => {
+  const ribbon = document.createElement('div')
   let isKnownSite = false
 
-  let beginCSS = ""
-  config.forEach((env_config) => {
-    beginCSS += generate_css(env_config)
+  let beginCSS = ''
+  configuration.forEach((configurationLine) => {
+    beginCSS += generateCss(configurationLine)
 
-    if (window.location.toString().indexOf(env_config.site) != -1) {
+    if (window.location.toString().indexOf(configurationLine.site) !== -1) {
       isKnownSite = true
-      ribbon.className = env_config.id
-      ribbon.textContent = env_config.label
+      ribbon.className = configurationLine.id
+      ribbon.textContent = configurationLine.label
     }
   })
-  
+
   if (!isKnownSite) return
 
-  ribbon.id = "env-ribbon"
+  ribbon.id = 'env-ribbon'
   document.body.appendChild(ribbon)
 
   let CSS = `#env-ribbon {
@@ -37,9 +37,9 @@ const add_ribbon = ({ detail: config }) => {
       }`
   CSS += beginCSS
 
-  const style = document.createElement("style")
+  const style = document.createElement('style')
   style.appendChild(document.createTextNode(CSS))
-  document.getElementsByTagName("head")[0].appendChild(style)
+  document.getElementsByTagName('head')[0].appendChild(style)
 }
 
-document.addEventListener('plugin_loaded', add_ribbon)
+document.addEventListener('plugin_loaded', addRibbon)
