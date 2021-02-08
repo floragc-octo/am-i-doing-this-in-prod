@@ -2,3 +2,5 @@ node_modules/
 .idea/
 .DS_Store
 extension.zip
+web-ext-artifacts/
+
