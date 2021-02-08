@@ -49,3 +49,7 @@ jobs:
         run: yarn lint
         env:
           CI: true
+      - name: run stylelint
+        run: yarn lint
+        env:
+          CI: true
