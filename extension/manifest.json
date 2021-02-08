@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Am I doing this in Prod ?",
-    "version": "0.1",
+    "version": "0.2",
     "author": "Flora GC, Simon Belbeoch",
     "description": "Browsers' extensions (Chrome and Firefox based) to display dev environments",
     "options_ui": {
@@ -21,7 +21,7 @@
     },
     "permissions": [
         "storage",
-        "tabs"
+        "activeTab"
     ],
     "browser_action": {
         "default_icon": {
