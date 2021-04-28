@@ -98,7 +98,7 @@ const removeEnv = ({ target }) => {
 }
 
 const addEnv = (
-  { site = currentURL, color = '#00FF00', label = 'ENV LABEL', cycleColor = '#FF0000', cycleLabel = 'CYCLE ENV LABEL', cycleSite },
+  { site = currentURL, color = '#00FF00', label = 'ENV LABEL', cycleColor = '#FF0000', cycleLabel = 'CYCLE', cycleSite = currentURL},
   i = _numberOfElement(),
 ) => {
   const form = document.querySelector('#cs-container')
