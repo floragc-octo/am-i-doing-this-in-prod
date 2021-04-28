@@ -63,8 +63,7 @@ const _createInput = (params) => {
 }
 
 const _createHeader = (params) => {
-  const { field, i } = params
-  const id = field + i
+  const { field } = params
   const container = createElement('span')
   container.appendChild(document.createTextNode(field))
   return container

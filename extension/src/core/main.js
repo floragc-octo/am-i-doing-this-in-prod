@@ -34,7 +34,6 @@ const addProtocol = (url, protocol) => (!/^(?:f|ht)tps?\:\/\//.test(url)) ? prot
 
 const changeUrl = ({ detail: { url } }) => {
   const newDomain = (new URL(url)).hostname
-  const currentUrl = (new URL(window.location.toString()))
   window.location.host = newDomain
 }
 
