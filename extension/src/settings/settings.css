@@ -1,197 +1,305 @@
 /* structure */
 
+:root {
+    --text-color: #F7FAFB;
+    --background-color: #2D3848;
+    --section-color: #4A5568;
+    --primary-color: #0a9396;
+    --secondary-color: #4361ee;
+    --alert-color: #ff5689;
+}
+
 html {
-  font-size: 100%;
+    font-size: 100%;
 }
 
 body {
-  background-color: #f7f7f7;
-  color: rgba(0, 0, 0, 0.7);
-  font: 1rem "Segoe UI", Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  margin: auto;
-  max-width: 800px;
-  padding: 0.3rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font: 1rem "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    margin: auto;
+    width: 660px;
+    padding: 0.3rem;
+}
+
+main>button {
+    margin-right: 0.3rem;
 }
 
 a,
 button {
-  border-radius: 0.5rem;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1rem;
-  justify-content: center;
-  padding: calc(0.5em - 1px) 1em;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    justify-content: center;
+    padding: calc(0.5rem - 1px) 1rem;
 }
 
 a,
 button,
 label,
 input {
-  display: inline-block;
-  font-size: 0.9em;
-  margin: 0.4rem 0;
+    display: inline-block;
+    font-size: 0.9rem;
+    margin: 0.4rem 0;
 }
 
-main > button {
-  margin-right: 0.3rem;
+main>button {
+    margin-right: 0.3rem;
 }
 
-h1 {
-  border: 5px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(90deg, rgba(86, 69, 157, 1) 0%, rgba(42, 157, 143, 1) 100%);
-  color: rgba(86, 69, 157, 1);
-  font-size: 1.5em;
-  font-weight: bolder;
-  margin: 0 0 0.5rem;
-  padding: 1rem;
+#content-head {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    border-bottom: 0.1rem solid var(--section-color);
+    padding: 0.5rem;
+}
+
+#content-head h1 {
+    font-size: 1.7rem;
+    font-weight: bolder;
+}
+
+#content-head h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#content-head>div {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+#content-head>button {
+    grid-area: 1 / 2 / 2 / 3;
+    margin-right: 0;
 }
 
 @media (max-width: 500px) {
-  h1 {
-    background-color: rgba(86, 69, 157, 0.5);
-    border: none;
-    color: rgb(25 18 54);
-    font-size: 1em;
-    margin: 0 auto 10px auto;
-    padding: 0.5em;
-  }
+    h1 {
+        border: none;
+        font-size: 1em;
+        color: var(--text-color);
+        margin: 0 auto 0.5rem auto;
+        padding: 0.5em;
+    }
 }
 
 section {
-  background-color: #fff;
-  margin-bottom: 0.3rem;
-  margin-top: 0.2em;
-  padding: 0.5rem;
+    background-color: var(--section-color);
+    border-radius: 0.5rem;
+    margin-bottom: 0.3rem;
+    margin-top: 0.2rem;
+    padding: 0.5rem;
 }
 
 .section-instruction {
-  align-items: center;
-  background-color: #eef6fc;
-  border-radius: 5px;
-  color: #1d72aa;
-  display: flex;
-  font-size: 0.9em;
-  font-style: italic;
-  margin: 0.3rem 0;
-  padding: 0.3rem 0.5rem;
+    align-items: center;
+    border-radius: 0.5rem;
+    color: var(var(--text-color));
+    display: flex;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 0.1rem 0;
+    padding: 0.3rem;
 }
 
 .section-instruction ul {
-  margin-left: 0;
-  padding-left: 20px;
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
 }
 
 header {
-  border-bottom: 5px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(90deg, rgba(86, 69, 157, 1) 0%, rgba(42, 157, 143, 1) 100%);
-  color: #14213d;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+header:before {
+    content: '# ';
+}
+
+header[title]:after {
+    padding-left: 0;
+}
+
+header {
+    color: var(--text-color);
+    background-color: var(--section-color);
+    border-radius: 0.5rem;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
 }
 
 header::before {
-  content: '# ';
+    content: '# ';
 }
 
 header[title]::after {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z" fill="rgba(20,33,61,1)"/></svg>');
-  background-size: cover;
-  content: '';
-  display: inline-block;
-  height: 16px;
-  margin-left: 0.5rem;
-  width: 16px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z" fill="rgba(20,33,61,1)"/></svg>');
+    background-size: cover;
+    content: '';
+    display: inline-block;
+    height: 1rem;
+    margin-left: 0.5rem;
+    width: 1rem;
 }
 
-header > span.tips {
-  color: #ff5689;
-  font-size: 0.7em;
-  font-style: italic;
-  text-transform: none;
+header>span.tips {
+    color: var(--alert-color);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-transform: none;
 }
+
 
 /* forms */
 
 a#cs-export {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .remove-button {
-  border-radius: 0.5rem;
-  font-size: 0.8em;
-  padding: 0.3rem 0.5rem;
-  position: absolute;
-  right: 0.5rem;
-  top: 0.1rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.1rem;
+}
+
+a,
+button {
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    justify-content: center;
+    padding: calc(.5em - 1px) 1em;
 }
 
 a.primary,
 button.primary {
-  background: rgb(86, 69, 157);
-  background: linear-gradient(90deg, rgba(86, 69, 157, 1) 0%, rgba(60, 46, 119, 0.8393732492997199) 100%);
-  border-color: transparent;
-  font-size: 1.1em;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: 0.1rem solid transparent;
+    font-size: 1rem;
+    padding: 1rem;
+    font-weight: bolder;
 }
 
 .call-to-action {
-  display: block;
-  margin: auto;
+    display: block;
+    margin: auto;
 }
 
 a.secondary,
 button.secondary {
-  background: #fff;
-  border: 1px solid rgba(86, 69, 157, 1);
-  color: rgba(86, 69, 157, 1);
+    background: var(--secondary-color);
+    color: var(--section-color);
 }
 
-section button {
-  display: block;
+a,
+button,
+label,
+input {
+    display: inline-block;
+    font-size: 0.9em;
+    margin: 0.4rem 0;
 }
 
 button:focus,
 button:hover,
 a:focus,
 a:hover {
-  background-color: #56459dcc;
-  color: #fff;
+    background-color: var(--section-color);
+    color: #FFF;
+}
+
+section button {
+    display: block;
 }
 
 label {
-  color: #14213d;
-  font-weight: 500;
-  margin-left: 0.3rem;
-  text-transform: capitalize;
-  width: 40px;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 0.3rem;
+    text-transform: capitalize;
+    width: 2.5rem;
 }
 
 input[type="text"] {
-  color: #666;
-  font-weight: 500;
-  padding: 0.3rem;
+    color: var(--section-color);
+}
+
+a.secondary,
+button.secondary {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 0.1rem solid transparent;
+}
+
+a.tertiary,
+button.tertiary {
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--background-color);
+}
+
+section button {
+    display: block;
+}
+
+button:focus,
+button:hover,
+a:focus,
+a:hover {
+    color: var(--text-color);
+    border: 0.1rem solid var(--section-color);
+    background: var(--background-color);
+}
+
+label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-left: 0.3rem;
+    text-transform: capitalize;
+    width: 2.5rem;
+}
+
+input[type="text"] {
+    color: var(--section-color);
+    font-weight: 500;
+    padding: 0.3rem;
 }
 
 input[type="color"] {
-  width: 40px;
+    width: 40px;
 }
 
 input[type="file"] {
-  background-color: #fff;
-  color: #117a65;
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    width: 22rem;
 }
 
 fieldset {
-  margin: 0.4rem 0;
-  padding: 0 0.2rem;
-  position: relative;
+    margin: 0.4rem 0;
+    padding: 0 0.2rem;
+    position: relative;
 }
 
-#config-retriever > label {
-  display: inline;
+#config-retriever>label {
+    display: inline;
 }

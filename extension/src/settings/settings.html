@@ -8,37 +8,41 @@
 </head>
 
 <body>
-    <h1>Environments settings</h1>
-    <main>
+    <div id="content-head">
+        <div>
+            <h1>Am I doing this in prod ?</h1>
+            <h2>Environments configuration</h2>
+        </div>
         <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
-        <header class="instructions"
-                title="The configuration will be added to the existing one.
+    </div>
+    <main>
+        <header class="instructions" title="The configuration will be added to the existing one.
                         Must be a json file">
-            Retrieve settings from file
+            import or export configuration
         </header>
         <section>
             <form id="config-retriever">
                 <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json" />
-                <button type="submit" id="cr-submit" class="secondary">Load and save</button>
+                <button type="submit" id="cr-submit" class="secondary">Save settings from selected file</button>
             </form>
         </section>
-        <header>Change settings <span class="tips">(don't forget to save !)</span></header>
         <section>
-            <button type="button" id="add-default-env" class="secondary">Create a new env</button>
+            <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export settings to file</a>
+        </section>
+
+        <header>update configuration <span class="tips">(don't forget to save !)</span></header>
+        <section>
+            <button type="button" id="add-default-env" class="secondary">Add a new environment to the list</button>
             <span class="section-instruction">
                 <ul>
-                    <li>Label size is 10 characters max</li>
-                    <li>Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</li>
+                    <li>Labels are limited to 10 characters for readability</li>
+                    <li>Site URLs have a 50 letters limit and can be part of a URL (eg. without http ...)</li>
                 </ul>
             </span>
             <form id="config-setter">
                 <div id="cs-container"></div>
-                <button type="submit" id="cs-form" class="secondary">Save settings</button>
+                <button type="submit" id="cs-form" class="tertiary">Save settings</button>
             </form>
-        </section>
-        <header>Save setting to JSON file</header>
-        <section>
-            <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export to JSON</a>
         </section>
     </main>
 </body>
