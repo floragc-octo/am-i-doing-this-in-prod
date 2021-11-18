@@ -1,16 +1,17 @@
 /* structure */
 
 :root {
-    --text-color: #F7FAFB;
-    --background-color: #2D3848;
-    --section-color: #4A5568;
+    --text-color: #f7fafb;
+    --background-color: #2d3848;
+    --section-color: #4a5568;
     --primary-color: #0a9396;
     --secondary-color: #4361ee;
-    --alert-color: #ff5689;
+    --alert-color: #ffb6cc;
 }
 
 html {
     font-size: 100%;
+    box-sizing: border-box;
 }
 
 body {
@@ -20,11 +21,8 @@ body {
     font-weight: 400;
     margin: auto;
     width: 660px;
-    padding: 0.3rem;
-}
-
-main>button {
-    margin-right: 0.3rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
 
 a,
@@ -50,33 +48,49 @@ main>button {
     margin-right: 0.3rem;
 }
 
-#content-head {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0;
-    grid-row-gap: 0;
-    border-bottom: 0.1rem solid var(--section-color);
-    padding: 0.5rem;
+section button {
+    display: block;
 }
 
-#content-head h1 {
+button:focus,
+button:hover,
+a:focus,
+a:hover {
+    color: var(--text-color);
+    border: 0.1rem solid var(--section-color);
+    background: var(--background-color);
+}
+
+body>header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem 0.2rem;
+    grid-template-areas: "content-header-title content-header-cta" "content-header-subtitle content-header-cta";
+    border-bottom: 0.1rem solid var(--section-color);
+    padding: 1rem;
+    margin-top: 0;
+}
+
+body>header h1 {
     font-size: 1.7rem;
     font-weight: bolder;
+    grid-area: content-header-title;
+    margin: 0;
 }
 
-#content-head h2 {
+body>header h2 {
     font-size: 1rem;
     font-weight: bold;
+    grid-area: content-header-subtitle;
+    align-self: center;
+    margin: 0;
 }
 
-#content-head>div {
-    grid-area: 1 / 1 / 2 / 2;
-}
-
-#content-head>button {
-    grid-area: 1 / 2 / 2 / 3;
+body>header>button {
     margin-right: 0;
+    align-self: flex-end;
+    grid-area: content-header-cta;
 }
 
 @media (max-width: 500px) {
@@ -100,8 +114,7 @@ section {
 .section-instruction {
     align-items: center;
     border-radius: 0.5rem;
-    color: var(var(--text-color));
-    display: flex;
+    color: var(--text-color);
     font-size: 0.9rem;
     font-style: italic;
     margin: 0.1rem 0;
@@ -109,42 +122,29 @@ section {
 }
 
 .section-instruction ul {
-    margin-left: 0;
-    padding-left: 0;
+    margin: 0;
+    padding: 0;
     list-style-type: none;
 }
 
 header {
+    font-size: 1.1em;
     font-weight: bold;
-    margin-top: 0.5rem;
     padding: 0.5rem 1rem;
-}
-
-header:before {
-    content: '# ';
-}
-
-header[title]:after {
-    padding-left: 0;
-}
-
-header {
     color: var(--text-color);
     background-color: var(--section-color);
     border-radius: 0.5rem;
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    padding: 0.5rem;
+    margin-top: 1rem;
 }
 
-header::before {
+main>header::before {
     content: '# ';
 }
 
 header[title]::after {
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z" fill="rgba(20,33,61,1)"/></svg>');
     background-size: cover;
+    padding-left: 0;
     content: '';
     display: inline-block;
     height: 1rem;
@@ -175,16 +175,6 @@ a#cs-export {
     top: 0.1rem;
 }
 
-a,
-button {
-    border-radius: 0.5rem;
-    color: var(--text-color);
-    cursor: pointer;
-    font-size: 1rem;
-    justify-content: center;
-    padding: calc(.5em - 1px) 1em;
-}
-
 a.primary,
 button.primary {
     background: var(--primary-color);
@@ -203,71 +193,10 @@ button.primary {
 a.secondary,
 button.secondary {
     background: var(--secondary-color);
-    color: var(--section-color);
-}
-
-a,
-button,
-label,
-input {
-    display: inline-block;
-    font-size: 0.9em;
-    margin: 0.4rem 0;
-}
-
-button:focus,
-button:hover,
-a:focus,
-a:hover {
-    background-color: var(--section-color);
-    color: #FFF;
-}
-
-section button {
-    display: block;
-}
-
-label {
-    color: var(--text-color);
-    font-weight: 500;
-    margin-left: 0.3rem;
-    text-transform: capitalize;
-    width: 2.5rem;
-}
-
-input[type="text"] {
-    color: var(--section-color);
-}
-
-a.secondary,
-button.secondary {
-    background: var(--secondary-color);
     color: var(--text-color);
     font-size: 0.9rem;
     font-weight: bold;
     border: 0.1rem solid transparent;
-}
-
-a.tertiary,
-button.tertiary {
-    background: var(--background-color);
-    color: var(--text-color);
-    font-size: 0.9rem;
-    font-weight: bold;
-    border: 1px solid var(--background-color);
-}
-
-section button {
-    display: block;
-}
-
-button:focus,
-button:hover,
-a:focus,
-a:hover {
-    color: var(--text-color);
-    border: 0.1rem solid var(--section-color);
-    background: var(--background-color);
 }
 
 label {
@@ -282,6 +211,15 @@ input[type="text"] {
     color: var(--section-color);
     font-weight: 500;
     padding: 0.3rem;
+}
+
+a.tertiary,
+button.tertiary {
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--background-color);
 }
 
 input[type="color"] {

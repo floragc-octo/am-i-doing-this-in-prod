@@ -1,37 +1,41 @@
 {
-  "name": "didactic-barnacle",
-  "version": "0.2",
-  "description": "Browsers' extension to highlight dev environment",
-  "scripts": {
-    "build:chrome": "zip -r extension.zip ./extension/*",
-    "build:firefox": "web-ext build --source-dir ./extension/",
-    "lint": "eslint ./extension/src",
-    "lint:fix": "eslint ./extension/src --fix",
-    "stylelint": "stylelint ./extension/src",
-    "stylelint:fix": "stylelint ./extension/src --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/floragc-octo/didactic-barnacle.git"
-  },
-  "keywords": [
-    "extension",
-    "browser",
-    "starter"
-  ],
-  "author": "Flora GC",
-  "contributors": "Simon Belbeoch <simon.belbeoch@gmail.com> (https://github.com/LiquidITGuy)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/floragc-octo/didactic-barnacle/issues"
-  },
-  "homepage": "https://github.com/floragc-octo/didactic-barnacle#readme",
-  "devDependencies": {
-    "eslint": "^7.16.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "stylelint": "^13.9.0",
-    "stylelint-config-standard": "^20.0.0",
-    "web-ext": "^5.4.0"
-  }
+    "name": "am-i-doing-this-in-prod",
+    "version": "0.2",
+    "description": "Browsers' extension to highlight dev environment",
+    "scripts": {
+        "build:chrome": "zip -r extension.zip ./extension/*",
+        "build:firefox": "web-ext build --source-dir ./extension/",
+        "lint": "eslint ./extension/src",
+        "lint:fix": "eslint ./extension/src --fix",
+        "stylelint": "stylelint ./extension/src",
+        "stylelint:fix": "stylelint ./extension/src --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/floragc-octo/am-i-doing-this-in-prod.git"
+    },
+    "keywords": [
+        "extension",
+        "browser",
+        "starter"
+    ],
+    "author": "Flora GC",
+    "contributors": [{
+        "name": "Simon Belbeoch",
+        "email": "simon.belbeoch@gmail.com",
+        "url": "https://github.com/LiquidITGuy"
+    }],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/floragc-octo/am-i-doing-this-in-prod/issues"
+    },
+    "homepage": "https://github.com/floragc-octo/am-i-doing-this-in-prod#readme",
+    "devDependencies": {
+        "eslint": "^7.16.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.22.1",
+        "stylelint": "^13.9.0",
+        "stylelint-config-standard": "^20.0.0",
+        "web-ext": "^5.4.0"
+    }
 }

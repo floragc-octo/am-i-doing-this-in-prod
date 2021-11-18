@@ -8,13 +8,11 @@
 </head>
 
 <body>
-    <div id="content-head">
-        <div>
-            <h1>Am I doing this in prod ?</h1>
-            <h2>Environments configuration</h2>
-        </div>
+    <header>
+        <h1>Am I doing this in prod ?</h1>
+        <h2>Environments configuration</h2>
         <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
-    </div>
+    </header>
     <main>
         <header class="instructions" title="The configuration will be added to the existing one.
                         Must be a json file">
@@ -36,7 +34,7 @@
             <span class="section-instruction">
                 <ul>
                     <li>Labels are limited to 10 characters for readability</li>
-                    <li>Site URLs have a 50 letters limit and can be part of a URL (eg. without http ...)</li>
+                    <li>Site URLs have a 50 chars limit and can be part of a URL (eg. without http ...)</li>
                 </ul>
             </span>
             <form id="config-setter">

@@ -34,7 +34,7 @@ plugins' menu (the left one on the screenshot below)
 
 Once you have installed the extension you can start to add pages/environment or import existing settings
 
-<img src="documentation/assets/settings.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/48243955/141380013-85c1843c-af96-4d49-a162-11c365822e0d.png" width="500">
 
 ### Customize/Add an environment
 
