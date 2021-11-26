@@ -6,6 +6,11 @@ This extension display a ribbon on specific pages in order to have a quick view 
 
 <img src="documentation/assets/example.png" height="250"/>
 
+Download in `Chrome web store` : [Am I doing this in Prod ?](https://chrome.google.com/webstore/detail/am-i-doing-this-in-prod/aoglejgecidnodkkogbgieidhmhjjnch) 
+
+Download for `Firefox` _(not 100% supported yet, see below)_ : [Am I doing this in Prod ? (experimental)](https://addons.mozilla.org/en-CA/firefox/addon/am-i-doing-this-in-prod/)
+
+
 ---
 
 ## What does it do
