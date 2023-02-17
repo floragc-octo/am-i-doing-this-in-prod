@@ -29,27 +29,64 @@ const newInvertColor = (color) => {
 
 const generateCss = ({ color, id }) => `#env-ribbon.${id} { background-color: ${color}; color: ${newInvertColor(color)};}`
 
-const addRibbon = ({ detail: configuration }) => {
-  const ribbon = document.createElement('div')
-  let isKnownSite = false
+const addProtocol = (url, protocol) => (!/^(?:f|ht)tps?\:\/\//.test(url)) ? protocol + '//' + url : url
 
+
+const changeUrl = ({ detail: { url } }) => {
+  const newDomain = (new URL(url)).hostname
+  window.location.host = newDomain
+}
+
+const addRibbon = ({ detail: configuration }) => {
+  let isKnownSite = false
+  let url = ''
   let beginCSS = ''
+  let className = ''
+  let textContent = ''
   configuration.forEach((configurationLine) => {
     beginCSS += generateCss(configurationLine)
-
     if (window.location.toString().indexOf(configurationLine.site) !== -1) {
+      beginCSS += generateCss(configurationLine)
+  
       isKnownSite = true
-      ribbon.className = configurationLine.id
-      ribbon.textContent = configurationLine.label
+      className = configurationLine.id
+      textContent = configurationLine.label
+      url = configurationLine.cycleSite
+    }
+    if (window.location.toString().indexOf(configurationLine.cycleSite) !== -1) {
+      beginCSS += generateCss({ ...configurationLine, color: configurationLine.cycleColor})
+  
+      isKnownSite = true
+      className = configurationLine.id
+      textContent = configurationLine.cycleLabel
+      url = configurationLine.site
     }
   })
 
   if (!isKnownSite) return
 
-  ribbon.id = 'env-ribbon'
-  document.body.appendChild(ribbon)
+  const normalizedUrl = addProtocol(url, window.location.protocol)
+  const event = new CustomEvent('ribbon_click', { detail: { url: normalizedUrl } })
+  const ribbon = document.createElement('div')
+  // Add link have the link hover behaviour
+  const a = document.createElement('a')
 
-  let CSS = `#env-ribbon {
+  ribbon.textContent = textContent
+  ribbon.className = className
+  ribbon.id = 'env-ribbon'
+  
+  a.appendChild(ribbon)
+  a.href = normalizedUrl
+  a.addEventListener('click', (e) => {
+    e.preventDefault()
+    document.dispatchEvent(event)
+  })
+  
+  document.body.appendChild(a)
+
+  let CSS = `
+      #env-ribbon {
+        cursor: pointer;
         font-weight: bolder;
         box-shadow: 0 0 5px; 
         height: 3rem;
@@ -71,3 +108,4 @@ const addRibbon = ({ detail: configuration }) => {
 }
 
 document.addEventListener('plugin_loaded', addRibbon)
+document.addEventListener('ribbon_click', changeUrl)

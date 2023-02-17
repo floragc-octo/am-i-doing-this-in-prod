@@ -24,6 +24,25 @@ const REMOVE_BUTTON = {
   innerText: 'X',
 }
 
+const CYCLE_COLOR_INPUT = {
+  field: 'cycle_color',
+  title: 'color',
+  type: 'color',
+}
+const CYCLE_SITE_INPUT = {
+  field: 'cycle_site',
+  title: 'site',
+  size: 50,
+  type: 'text',
+}
+const CYCLE_LABEL_INPUT = {
+  field: 'cycle_label',
+  title: 'label',
+  size: 10,
+  maxLength: 10,
+  type: 'text',
+}
+
 const createElement = (tagName, params = {}) => {
   const domElement = document.createElement(tagName)
   Object.keys(params).forEach((key) => {
@@ -35,11 +54,18 @@ const createElement = (tagName, params = {}) => {
 const appendChildren = (parent, children) => children.forEach((child) => parent.appendChild(child))
 
 const _createInput = (params) => {
-  const { field, i } = params
+  const { title, field, i } = params
   const id = field + i
   const container = createElement('span')
-  container.appendChild(createElement('label', { for: id, innerText: field }))
+  container.appendChild(createElement('label', { for: id, innerText: title || field }))
   container.appendChild(createElement('input', { ...params, id }))
+  return container
+}
+
+const _createHeader = (params) => {
+  const { field } = params
+  const container = createElement('span')
+  container.appendChild(document.createTextNode(field))
   return container
 }
 
@@ -50,8 +76,11 @@ const generateConfigurationLine = (domElement, i) => {
   const site = domElement.querySelector('[field=site]').value
   const label = domElement.querySelector('[field=label]').value
   const color = domElement.querySelector('[field=color]').value
+  const cycleSite = domElement.querySelector('[field=cycle_site]').value
+  const cycleLabel = domElement.querySelector('[field=cycle_label]').value
+  const cycleColor = domElement.querySelector('[field=cycle_color]').value
   return {
-    site, label, color, id: `a${i}`,
+    site,label, color, cycleSite, cycleLabel, cycleColor, id: `a${i}`,
   }
 }
 
@@ -68,17 +97,28 @@ const removeEnv = ({ target }) => {
 }
 
 const addEnv = (
-  { site = currentURL, color = '#CCCCCC', label = 'ENV LABEL' },
+  { site = currentURL, color = '#00FF00', label = 'ENV LABEL', cycleColor = '#FF0000', cycleLabel = 'CYCLE', cycleSite = currentURL},
   i = _numberOfElement(),
 ) => {
   const form = document.querySelector('#cs-container')
   const env = createElement('fieldset', { style: `border: 2px solid ${color}; background-color: ${color}20` })
   const removeButton = createElement('button', { ...REMOVE_BUTTON, onclick: removeEnv })
+
+  // Main Site
   const colorElement = _createInput({ ...COLOR_INPUT, value: color, i })
   const siteElement = _createInput({ ...SITE_INPUT, value: site, i })
   const labelElement = _createInput({ ...LABEL_INPUT, value: label, i })
+
+  // Cycle
+  const headerCycleElement = _createHeader({ field: 'cycle', size: 50 })
+  const siteCycleElement = _createInput({ ...CYCLE_SITE_INPUT, value: cycleSite, i })
+  const colorCycleElement = _createInput({ ...CYCLE_COLOR_INPUT, value: cycleColor, i })
+  const labelCycleElement = _createInput({ ...CYCLE_LABEL_INPUT, value: cycleLabel, i })
+
+  headerCycleElement.style = 'display: block;'
   siteElement.style = 'display: block;'
-  appendChildren(env, [labelElement, colorElement, siteElement, removeButton])
+  siteCycleElement.style = 'display: block;'
+  appendChildren(env, [labelElement, colorElement, siteElement, headerCycleElement, labelCycleElement, colorCycleElement, siteCycleElement, removeButton])
   form.insertBefore(env, form.firstChild)
 }
 

@@ -4,6 +4,8 @@ Have you ever come close to create a silly product on production while thinking 
 
 This extension display a ribbon on specific pages in order to have a quick view of which environment you're in !
 
+You can also click the ribbon to  cycle between your current environment and a second environment of your choice !
+
 <img src="documentation/assets/example.png" height="250"/>
 
 Download in `Chrome web store` : [Am I doing this in Prod ?](https://chrome.google.com/webstore/detail/am-i-doing-this-in-prod/aoglejgecidnodkkogbgieidhmhjjnch) 
@@ -22,6 +24,8 @@ This extension allows to :
     * Ribbon's background color
     * Label (max 10 characters)
 * Add a default env and customize it
+* Add a second url and allow you to cycle between both
+* Add a ribbon that on click will switch between the defined urls
 * Export your configuration in JSON format (to share with your team, maybe)
 * Import a configuration 
 
