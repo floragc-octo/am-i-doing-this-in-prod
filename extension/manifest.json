@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Am I doing this in Prod ?",
     "version": "0.2",
     "author": "Flora GC, Simon Belbeoch",
@@ -23,7 +23,7 @@
         "storage",
         "activeTab"
     ],
-    "browser_action": {
+    "action": {
         "default_icon": {
             "16": "icons/icon-16.png",
             "32": "icons/icon-32.png",
