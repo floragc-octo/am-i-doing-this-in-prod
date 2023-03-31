@@ -1,6 +1,5 @@
 const MAXIMUM_Z_INDEX = 2147483647
 let hasRibbon = false
-let currentEnv = null
 const ribbon = document.createElement('div')
 ribbon.id = 'env-ribbon'
 
@@ -64,7 +63,7 @@ const initCSS = ({ detail: configuration }) => {
       }`
 
   const style = document.createElement('style')
-  style.appendChild(document.createTextNode(CSS+beginCSS))
+  style.appendChild(document.createTextNode(CSS + beginCSS))
   document.getElementsByTagName('head')[0].appendChild(style)
 }
 
@@ -78,9 +77,8 @@ const addOrRemoveRibbon = ({ detail: configuration }) => {
     }
   })
 
-
   if (!isKnownSite) {
-    if (hasRibbon){
+    if (hasRibbon) {
       removeRibbon()
     }
     return
@@ -91,22 +89,24 @@ const addOrRemoveRibbon = ({ detail: configuration }) => {
 }
 
 // this part is usefull for spa sites where you can have severals environnements like scalingo
-let lastUrl = location.href;
+let lastUrl = window.location.href
+
+function onUrlChangeOnSpa() {
+  addOrRemoveRibbon(savedConfig)
+}
+
 new MutationObserver(() => {
-  const url = location.href;
+  const url = window.location.href
   if (url !== lastUrl) {
-    lastUrl = url;
-    onUrlChangeOnSpa();
+    lastUrl = url
+    onUrlChangeOnSpa()
   }
-}).observe(document, {subtree: true, childList: true});
+}).observe(document, { subtree: true, childList: true })
 
 const init = (config) => {
   savedConfig = config
-  initCSS(config);
-  addOrRemoveRibbon(config);
-}
-function onUrlChangeOnSpa() {
-  addOrRemoveRibbon(savedConfig)
+  initCSS(config)
+  addOrRemoveRibbon(config)
 }
 
 document.addEventListener('plugin_loaded', init)
