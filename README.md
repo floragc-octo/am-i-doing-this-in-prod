@@ -80,6 +80,18 @@ If you need to know the structure, it may look like this :
 ]
 ```
 
+### one click import for your project
+If you want to import easily the configuration for all your project you can use event for all user who already installed the extension.
+Only one people have to configure the extension then you can export the file and emit an `am_i_doing_this_in_prod_custom_event_import` on document.
+it may be like : 
+```javascript
+const exportedConfig = [{"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-dev","label":"DEV","color":"#cccccc","id":"a0"},{"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-qua","label":"QUA","color":"#00ff4c","id":"a1"},{"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-prod","label":"PROD","color":"#ff0000","id":"a2"}]
+const importConfig = document.dispatchEvent(new CustomEvent('am_i_doing_this_in_prod_custom_event_import'), { detail: exportedConfig })
+```
+````html
+<button onclick="importConfig">Importer les environnements</button>
+````
+
 ---
 
 ## Built With
