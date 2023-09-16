@@ -51,7 +51,10 @@ const generateConfigurationLine = (domElement, i) => {
   const label = domElement.querySelector('[field=label]').value
   const color = domElement.querySelector('[field=color]').value
   return {
-    site, label, color, id: `a${i}`,
+    site,
+    label,
+    color,
+    id: `a${i}`,
   }
 }
 
@@ -67,12 +70,10 @@ const removeEnv = ({ target }) => {
   parent.removeChild(elementToDelete)
 }
 
-const addEnv = (
-  { site = currentURL, color = '#CCCCCC', label = 'ENV LABEL' },
-  i = _numberOfElement(),
-) => {
+const addEnv = ({ site = currentURL, color = '#CCCCCC', label = 'ENV LABEL' },
+  i = _numberOfElement()) => {
   const form = document.querySelector('#cs-container')
-  const env = createElement('fieldset', { style: `border: 2px solid ${color}; background-color: ${color}20` })
+  const env = createElement('fieldset', { style: `border: 1px solid transparent; background-color: ${color}20; border-radius: 0.5rem;` })
   const removeButton = createElement('button', { ...REMOVE_BUTTON, onclick: removeEnv })
   const colorElement = _createInput({ ...COLOR_INPUT, value: color, i })
   const siteElement = _createInput({ ...SITE_INPUT, value: site, i })
@@ -82,7 +83,7 @@ const addEnv = (
   form.insertBefore(env, form.firstChild)
 }
 
-const addDefaultEnv = () => addEnv({ site: 'localhost', label: 'DEFAULT' })
+const addDefaultEnv = () => addEnv({ site: 'replace by url', label: 'DEFAULT' })
 
 const getPageURL = async () => new Promise((resolve) =>
   chrome.tabs.query({ active: true }, (tabs) => resolve(new URL(tabs[0].url).host)))
@@ -96,7 +97,7 @@ const loadSettingsFromStorageAndDisplay = () =>
 const updateExportLink = () => {
   const dataStr = JSON.stringify(generateConfiguration())
   const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(dataStr)}`
-  const exportFileDefaultName = 'didacticbarnacle_export.json'
+  const exportFileDefaultName = 'amidoingthisinprod_export.json'
 
   const link = document.querySelector('#cs-export')
   link.href = dataUri
