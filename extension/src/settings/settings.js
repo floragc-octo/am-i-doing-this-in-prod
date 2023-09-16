@@ -20,8 +20,8 @@ const LABEL_INPUT = {
 }
 const REMOVE_BUTTON = {
   type: 'button',
-  className: 'remove-button secondary',
-  innerText: 'X',
+  className: 'remove-button',
+  ariaLabel: 'Retirer le site'
 }
 
 const createElement = (tagName, params = {}) => {
@@ -123,6 +123,30 @@ const retrieveSettingsFromFile = (event) => {
   }
 }
 
+const toutCacher = () => {
+  // tabs
+  const tabs = document.querySelectorAll('.tab')
+  tabs.forEach(function (tab) {
+    tab.setAttribute('aria-selected', 'false')
+  });
+
+  // sections
+  const tabViews = document.querySelectorAll('.tab-view')
+  tabViews.forEach(function (tabView) {
+    tabView.classList.add('hidden')
+  });
+}
+
+const changeTab = (event) => {
+  event.preventDefault()
+  toutCacher()
+  const tabView = event.target.getAttribute('data-section-id') ? event.target : event.target.parentNode
+  const tabViewId = tabView.getAttribute('data-section-id')
+  const elementAAfficher = document.querySelector(`#${tabViewId}`)
+  tabView.setAttribute('aria-selected', 'true')
+  elementAAfficher.classList.remove('hidden')
+}
+
 // DOM event listeners
 document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
 document.querySelector('#config-setter').addEventListener('submit', saveSettings)
@@ -130,5 +154,9 @@ document.querySelector('#config-retriever').addEventListener('submit', retrieveS
 document.querySelector('#add-env').addEventListener('click', addEnv)
 document.querySelector('#add-default-env').addEventListener('click', addDefaultEnv)
 document.querySelector('#cs-export').addEventListener('click', updateExportLink)
+const tabs = document.querySelectorAll('.tab')
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', changeTab)
+});
 
 setPageUrl()

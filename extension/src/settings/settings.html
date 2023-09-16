@@ -3,44 +3,54 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Environments settings</title>
-    <link rel="stylesheet" type="text/css" href="./settings.css" media="all" />
+    <title>Am I doing this in prod - setting</title>
+    <link rel="stylesheet" type="text/css" href="./settings.css" media="all"/>
 </head>
 
 <body>
-    <h1>Environments settings</h1>
-    <main>
-        <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
-        <header class="instructions"
-                title="The configuration will be added to the existing one.
-                        Must be a json file">
-            Retrieve settings from file
+<h1>Options</h1>
+<nav>
+    <ul>
+        <li data-icon="📌" data-section-id="section-ajout" aria-selected="true" class="tab"><a href="#">Ajout</a></li>
+        <li data-icon="⬇" data-section-id="section-import" class="tab"><a href="#">Import</a></li>
+        <li data-icon="⬆" data-section-id="section-export" class="tab"><a href="#">Export</a></li>
+    </ul>
+</nav>
+<main>
+    <section id="section-ajout" class="tab-view">
+        <header>
+            Ajouter une page
         </header>
-        <section>
-            <form id="config-retriever">
-                <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json" />
-                <button type="submit" id="cr-submit" class="secondary">Load and save</button>
-            </form>
-        </section>
-        <header>Change settings <span class="tips">(don't forget to save !)</span></header>
-        <section>
-            <button type="button" id="add-default-env" class="secondary">Create a new env</button>
-            <span class="section-instruction">
-                <ul>
-                    <li>Label size is 10 characters max</li>
-                    <li>Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</li>
-                </ul>
-            </span>
-            <form id="config-setter">
-                <div id="cs-container"></div>
-                <button type="submit" id="cs-form" class="secondary">Save settings</button>
-            </form>
-        </section>
-        <header>Save setting to JSON file</header>
-        <section>
-            <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export to JSON</a>
-        </section>
-    </main>
+        <button type="button" id="add-env" class="primary call-to-action">Ajouter la page courante</button>
+    </section>
+    <section id="section-import" class="tab-view hidden">
+        <header>
+            Importer une configuration existante
+            <p class="instructions">
+                La configuration sera ajoutée à la précédente.<br>Le format attendu est le json.
+            </p>
+        </header>
+        <form id="config-retriever">
+            <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json"/>
+            <button type="submit" id="cr-submit" class="primary">Charger le fichier</button>
+        </form>
+    </section>
+    <section id="section-export" class="tab-view hidden">
+        <header>Exporter</header>
+        <a role="button" id="cs-export" href="" tabindex="0" class="primary call-to-action">Exporter en JSON</a>
+    </section>
+    <section id="section-configuration">
+        <header>Configuration</header>
+        <p class="instructions">La taille du label est de 10 caractères.<br>L'URL fait 50 caractères max et peut être une
+            partie de l'URL (ex: sans http etc.).<br>La sauvegarde n'est pas automatique.
+        </p>
+        <button type="button" id="add-default-env" class="secondary call-to-action">Ajouter un autre site</button>
+        <form id="config-setter">
+            <div id="cs-container"></div>
+            <button type="submit" id="cs-form" class="primary">Sauvegarder</button>
+        </form>
+    </section>
+</main>
 </body>
 <script src="settings.js"></script>
 
