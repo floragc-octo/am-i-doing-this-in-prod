@@ -2,7 +2,7 @@
 
 :root {
   --couleur-primaire: rgba(0, 130, 201, 1);
-  --couleur-texte-primaire: rgba(0, 0, 0, 1);
+  --couleur-texte-primaire: rgba(255, 255, 255, 1);
   --couleur-secondaire: rgba(230, 243, 250, 1);
   --couleur-texte:  rgba(34, 34, 34, 1);
   --couleur-alerte:  rgba(236, 167, 0, 1);;
@@ -27,9 +27,7 @@ h1 {
   font-weight: bold;
   line-height: 1.8rem;
   vertical-align: middle;
-}
 
-h1 {
   &:before {
      content: '🏷';
      transform: rotateY(180deg);
@@ -41,12 +39,7 @@ h1 {
    }
 }
 
-main > button {
-    margin-right: 0.3rem;
-}
-
 section {
-    background-color: #fff;
     margin-bottom: 0.3rem;
     margin-top: 0.2em;
     padding: 0.5rem;
@@ -74,56 +67,46 @@ nav ul {
   border-radius: 1rem;
   margin-block-start: 0;
   padding-inline-start: 0;
-  margin: 0 auto 1rem;
+  margin: 0 auto;
 }
 
 nav > ul > li {
-    a {
-        color: var(--couleur-texte);
-    }
-    font-size: 1.1rem;
-    font-weight: bold;
-    vertical-align: middle;
-    padding: .5rem 0;
-    cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: .5rem 0;
+  cursor: pointer;
 }
 
-nav > ul {
-li::active,
-li::hover {
-     background-color: var(--couleur-secondaire);
-     border-radius: calc(1rem - 2px);
- }
+nav > ul > li > a {
+  color: var(--couleur-texte);
+} 
 
-&:active a,
-&:hover a {
-     color: var(--couleur-primaire);
- }
-
-&:before {
-     display: block;
-     content: attr(data-icon);
-     &st-style-type: none;
-     font-size: 1.25em;
- }
-
-&::aria-selected="true"] {
-    background-color: var(--couleur-primaire);
-    border-radius: calc(1rem - 2px);
+nav > ul > li:hover {
+  background-color: var(--couleur-secondaire);
+  border-radius: calc(1rem - 2px);
 }
-&::aria-selected="true"] a {
-                             color: white;
-                         }
 
-&::aria-selected="true"]:before {
-                            color: white;
-    }
+nav > ul > li:hover a {
+  color: var(--couleur-primaire);
+}
+
+nav > ul > li[aria-selected="true"] {
+  background-color: var(--couleur-primaire);
+  border-radius: calc(1rem - 2px);
+}
+
+nav > ul > li[aria-selected="true"] a {
+  color: white;
+}
+
+nav > ul > li[aria-selected="true"]:before {
+  color: white;
 }
 
 button,
 a {
   border-radius: 0.5rem;
-  color: var(--couleur-texte-primaire);
   cursor: pointer;
   font-size: 1rem;
   justify-content: center;
@@ -143,9 +126,16 @@ label,
 input {
   display: inline-block;
   font-size: 0.9em;
-  margin: 0.4rem 0;
 }
 
+button {
+  margin: 1rem 0;
+}
+
+label,
+input {
+  margin: .5rem 0;
+}
 
 .instructions {
   font-style: normal;
@@ -153,6 +143,7 @@ input {
   font-weight: 400;
   line-height: 1.2;
   letter-spacing: 0;
+  margin-bottom: 1rem;
 }
 
 /* forms */
@@ -167,20 +158,21 @@ a:visited {
   border: 1px solid transparent;
   border-radius: 0.5rem;
   font-size: 0.8em;
+  font-weight: bold;
   padding: 0.3rem 0.5rem;
   position: absolute;
   right: 0.5rem;
   top: 0.1rem;
 
-    &:hover {
-        background-color: var(--couleur-texte-primaire);
-        color: var(--couleur-alerte);
-        order: 1px solid var(--couleur-texte-primaire);
-    }
+  &:hover {
+    background-color: var(--couleur-texte-primaire);
+    color: var(--couleur-alerte);
+    border: 1px solid var(--couleur-alerte);
+  }
 
-    &:before {
-        content: 'X';
-    }
+  &:before {
+    content: 'X';
+  }
 }
 
 a.primary,
@@ -193,18 +185,12 @@ button.primary {
 
 button.call-to-action {
   display: block;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a.call-to-action {
   width: auto;
-}
-
-a.secondary,
-button.secondary {
-  background: #fff;
-  border: 2px solid rgba(86, 69, 157, 1);
-  color: rgba(86, 69, 157, 1);
 }
 
 section button {
@@ -221,11 +207,11 @@ a.primary:hover {
 }
 
 label {
-  color: #14213d;
+  color: var(--couleur-texte);
   font-weight: 500;
   margin-left: 0.3rem;
+  margin-right: .8rem;
   text-transform: capitalize;
-  width: 40px;
 }
 
 input[type="text"] {
@@ -251,6 +237,16 @@ fieldset {
 
 #config-retriever > label {
   display: inline;
+}
+
+#cs-container {
+  max-height: 240px;
+  overflow: auto;
+}
+
+.bottom-sticky {
+  position: sticky;
+  margin: 1rem auto;
 }
 
 .hidden {

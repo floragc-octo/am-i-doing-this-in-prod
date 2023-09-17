@@ -1,57 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Am I doing this in prod - setting</title>
-    <link rel="stylesheet" type="text/css" href="./settings.css" media="all"/>
-</head>
+    <link rel="stylesheet" type="text/css" href="./settings.css" media="all" />
+  </head>
 
-<body>
-<h1>Options</h1>
-<nav>
-    <ul>
-        <li data-icon="📌" data-section-id="section-ajout" aria-selected="true" class="tab"><a href="#">Ajout</a></li>
-        <li data-icon="⬇" data-section-id="section-import" class="tab"><a href="#">Import</a></li>
-        <li data-icon="⬆" data-section-id="section-export" class="tab"><a href="#">Export</a></li>
-    </ul>
-</nav>
-<main>
-    <section id="section-ajout" class="tab-view">
+  <body>
+    <h1>Options</h1>
+    <nav>
+      <ul>
+        <li data-section-id="section-ajout" aria-selected="true" class="tab">
+          <a href="#">Ajout</a>
+        </li>
+        <li data-section-id="section-import" class="tab">
+          <a href="#">Import</a>
+        </li>
+        <li data-section-id="section-export" class="tab">
+          <a href="#">Export</a>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <section id="section-ajout" class="tab-view">
+        <header>Ajouter une page</header>
+        <p class="instructions">
+          ⚠️ Toute modification ou ajout doit être sauvegardé.
+        </p>
+        <button type="button" id="add-env" class="primary call-to-action">
+          Ajouter la page courante
+        </button>
+        <form id="config-setter">
+          <div id="cs-container"></div>
+          <button type="submit" id="cs-form" class="primary bottom-sticky">
+            Sauvegarder
+          </button>
+        </form>
+      </section>
+      <section id="section-import" class="tab-view hidden">
         <header>
-            Ajouter une page
-        </header>
-        <button type="button" id="add-env" class="primary call-to-action">Ajouter la page courante</button>
-    </section>
-    <section id="section-import" class="tab-view hidden">
-        <header>
-            Importer une configuration existante
-            <p class="instructions">
-                La configuration sera ajoutée à la précédente.<br>Le format attendu est le json.
-            </p>
+          Importer une configuration
+          <p class="instructions">
+            La configuration importée sera automatiquement ajoutée à la configuration existante.<br />Le format
+            attendu est le json.
+          </p>
         </header>
         <form id="config-retriever">
-            <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json"/>
-            <button type="submit" id="cr-submit" class="primary">Charger le fichier</button>
+          <input
+            aria-label="configuration json file"
+            id="cr-file"
+            type="file"
+            accept="application/JSON, .json"
+          />
+          <button type="submit" id="cr-submit" class="primary">
+            Charger le fichier
+          </button>
         </form>
-    </section>
-    <section id="section-export" class="tab-view hidden">
-        <header>Exporter</header>
-        <a role="button" id="cs-export" href="" tabindex="0" class="primary call-to-action">Exporter en JSON</a>
-    </section>
-    <section id="section-configuration">
-        <header>Configuration</header>
-        <p class="instructions">La taille du label est de 10 caractères.<br>L'URL fait 50 caractères max et peut être une
-            partie de l'URL (ex: sans http etc.).<br>La sauvegarde n'est pas automatique.
-        </p>
-        <button type="button" id="add-default-env" class="secondary call-to-action">Ajouter un autre site</button>
-        <form id="config-setter">
-            <div id="cs-container"></div>
-            <button type="submit" id="cs-form" class="primary">Sauvegarder</button>
-        </form>
-    </section>
-</main>
-</body>
-<script src="settings.js"></script>
-
+      </section>
+      <section id="section-export" class="tab-view hidden">
+        <header>Exporter la configuration</header>
+        <a
+          role="button"
+          id="cs-export"
+          href="#"
+          tabindex="0"
+          class="primary call-to-action"
+          >
+          Exporter en JSON
+        </a>
+      </section>
+    </main>
+  </body>
+  <script src="settings.js"></script>
 </html>
