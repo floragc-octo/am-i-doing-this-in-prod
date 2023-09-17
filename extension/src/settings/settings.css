@@ -27,16 +27,16 @@ h1 {
   font-weight: bold;
   line-height: 1.8rem;
   vertical-align: middle;
+}
 
-  &:before {
-     content: '🏷';
-     transform: rotateY(180deg);
-     margin-right: 1rem;
-     font-size: 1.8rem;
-     line-height: 1.8rem;
-     vertical-align: middle;
-     display: inline-block;
-   }
+h1:before {
+  content: '🏷';
+  transform: rotateY(180deg);
+  margin-right: 1rem;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 section {
@@ -163,16 +163,16 @@ a:visited {
   position: absolute;
   right: 0.5rem;
   top: 0.1rem;
+}
 
-  &:hover {
-    background-color: var(--couleur-texte-primaire);
-    color: var(--couleur-alerte);
-    border: 1px solid var(--couleur-alerte);
-  }
+.remove-button:hover {
+  background-color: var(--couleur-texte-primaire);
+  color: var(--couleur-alerte);
+  border: 1px solid var(--couleur-alerte);
+}
 
-  &:before {
-    content: 'X';
-  }
+.remove-button:before {
+  content: 'X';
 }
 
 a.primary,

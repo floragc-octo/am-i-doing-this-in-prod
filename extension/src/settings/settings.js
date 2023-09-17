@@ -9,7 +9,7 @@ const COLOR_INPUT = {
 }
 const SITE_INPUT = {
   field: 'site',
-  size: 50,
+  size: 45,
   type: 'text',
 }
 const LABEL_INPUT = {
