@@ -4,12 +4,12 @@ const defaultSetting = { config: [] }
 const _numberOfElement = () => document.querySelector('#cs-container').childElementCount
 
 const COLOR_INPUT = {
-  field: 'color',
+  field: 'couleur',
   type: 'color',
 }
 const SITE_INPUT = {
   field: 'site',
-  size: 50,
+  size: 45,
   type: 'text',
 }
 const LABEL_INPUT = {
@@ -20,8 +20,8 @@ const LABEL_INPUT = {
 }
 const REMOVE_BUTTON = {
   type: 'button',
-  className: 'remove-button secondary',
-  innerText: 'X',
+  class: 'remove-button',
+  "aria-label": 'Retirer le site'
 }
 
 const createElement = (tagName, params = {}) => {
@@ -49,7 +49,7 @@ const getEnvList = () => domToList(document.querySelectorAll('#cs-container fiel
 const generateConfigurationLine = (domElement, i) => {
   const site = domElement.querySelector('[field=site]').value
   const label = domElement.querySelector('[field=label]').value
-  const color = domElement.querySelector('[field=color]').value
+  const color = domElement.querySelector('[field=couleur]').value
   return {
     site, label, color, id: `a${i}`,
   }
@@ -82,8 +82,6 @@ const addEnv = (
   form.insertBefore(env, form.firstChild)
 }
 
-const addDefaultEnv = () => addEnv({ site: 'localhost', label: 'DEFAULT' })
-
 const getPageURL = async () => new Promise((resolve) =>
   chrome.tabs.query({ active: true }, (tabs) => resolve(new URL(tabs[0].url).host)))
 
@@ -96,7 +94,7 @@ const loadSettingsFromStorageAndDisplay = () =>
 const updateExportLink = () => {
   const dataStr = JSON.stringify(generateConfiguration())
   const dataUri = `data:application/json;charset=utf-8,${encodeURIComponent(dataStr)}`
-  const exportFileDefaultName = 'didacticbarnacle_export.json'
+  const exportFileDefaultName = 'export_AmIDoingThisInProd.json'
 
   const link = document.querySelector('#cs-export')
   link.href = dataUri
@@ -123,12 +121,39 @@ const retrieveSettingsFromFile = (event) => {
   }
 }
 
+const toutCacher = () => {
+  // tabs
+  const tabs = document.querySelectorAll('.tab')
+  tabs.forEach(function (tab) {
+    tab.setAttribute('aria-selected', 'false')
+  });
+
+  // sections
+  const tabViews = document.querySelectorAll('.tab-view')
+  tabViews.forEach(function (tabView) {
+    tabView.classList.add('hidden')
+  });
+}
+
+const changeTab = (event) => {
+  event.preventDefault()
+  toutCacher()
+  const tabView = event.target.getAttribute('data-section-id') ? event.target : event.target.parentNode
+  const tabViewId = tabView.getAttribute('data-section-id')
+  const elementAAfficher = document.querySelector(`#${tabViewId}`)
+  tabView.setAttribute('aria-selected', 'true')
+  elementAAfficher.classList.remove('hidden')
+}
+
 // DOM event listeners
 document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
 document.querySelector('#config-setter').addEventListener('submit', saveSettings)
 document.querySelector('#config-retriever').addEventListener('submit', retrieveSettingsFromFile)
 document.querySelector('#add-env').addEventListener('click', addEnv)
-document.querySelector('#add-default-env').addEventListener('click', addDefaultEnv)
 document.querySelector('#cs-export').addEventListener('click', updateExportLink)
+const tabs = document.querySelectorAll('.tab')
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', changeTab)
+});
 
 setPageUrl()
