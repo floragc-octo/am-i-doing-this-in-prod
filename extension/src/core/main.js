@@ -60,6 +60,7 @@ const initCSS = ({ detail: configuration }) => {
         top: 48px;
         width: 250px;
         z-index: ${MAXIMUM_Z_INDEX};
+        pointer-events: none;
       }`
 
   const style = document.createElement('style')
