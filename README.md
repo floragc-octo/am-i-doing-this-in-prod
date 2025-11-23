@@ -4,7 +4,7 @@ Have you ever come close to create a silly product on production while thinking 
 
 This extension display a ribbon on specific pages in order to have a quick view of which environment you're in !
 
-<img src="documentation/assets/example_ribbon.png" height="250"/>
+<img src="documentation/assets/ribbon_example.png" height="250"/>
 
 Download in `Chrome web store` : [Am I doing this in Prod ?](https://chrome.google.com/webstore/detail/am-i-doing-this-in-prod/aoglejgecidnodkkogbgieidhmhjjnch) 
 
@@ -34,7 +34,7 @@ plugins' menu (the left one on the screenshot below)
 
 Once you have installed the extension you can start to add pages/environment or import existing settings
 
-<img src="documentation/assets/change_settings.png" height="400"/>
+<img src="documentation/assets/change_settings.png" height="600"/>
 
 <img src="documentation/assets/import.png" height="400"/>
 
