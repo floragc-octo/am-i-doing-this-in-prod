@@ -29,11 +29,16 @@
         },
         "default_title": "am-i-doing-this-in-prod"
     },
+    "sidebar_action": {
+        "default_panel": "src/settings/settings.html",
+        "default_title": "Environments settings"
+    },
     "side_panel": {
         "default_path": "src/settings/settings.html"
     },
     "background": {
-        "service_worker": "src/background.js"
+        "service_worker": "src/background.js",
+        "scripts": ["src/background.js"]
     },
     "content_scripts": [
         {
