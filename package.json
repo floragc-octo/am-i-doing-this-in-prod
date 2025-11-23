@@ -1,6 +1,6 @@
 {
   "name": "am-i-doing-this-in-prod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Browsers' extension to highlight dev environment",
   "scripts": {
     "build:chrome": "zip -r extension.zip ./extension/*",
