@@ -1,13 +1,9 @@
 {
     "manifest_version": 3,
     "name": "Am I doing this in Prod ?",
-    "version": "0.3",
-    "author": "Flora GC, Simon Belbeoch",
-    "description": "Browsers' extensions (Chrome and Firefox based) to display dev environments",
-    "options_ui": {
-        "page": "src/settings/settings.html",
-        "open_in_tab": true
-    },
+    "version": "1.0.0",
+    "author": "Flora Guy-Coichard, Simon Belbeoch",
+    "description": "Browser's extensions (Chrome and Firefox based) to display dev and misc environments",
     "browser_specific_settings": {
         "gecko": {
             "id": "didactic@barnacle"
@@ -21,7 +17,8 @@
     },
     "permissions": [
         "storage",
-        "activeTab"
+        "activeTab",
+        "sidePanel"
     ],
     "action": {
         "default_icon": {
@@ -30,8 +27,13 @@
             "48": "icons/icon-48.png",
             "64": "icons/icon-64.png"
         },
-        "default_title": "am-i-doing-this-in-prod",
-        "default_popup": "src/settings/settings.html"
+        "default_title": "am-i-doing-this-in-prod"
+    },
+    "side_panel": {
+        "default_path": "src/settings/settings.html"
+    },
+    "background": {
+        "service_worker": "src/background.js"
     },
     "content_scripts": [
         {

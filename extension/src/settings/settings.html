@@ -8,39 +8,61 @@
 </head>
 
 <body>
-    <h1>Environments settings</h1>
-    <main>
-        <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
-        <header class="instructions"
-                title="The configuration will be added to the existing one.
-                        Must be a json file">
-            Retrieve settings from file
-        </header>
-        <section>
-            <form id="config-retriever">
-                <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json" />
-                <button type="submit" id="cr-submit" class="secondary">Load and save</button>
-            </form>
-        </section>
-        <header>Change settings <span class="tips">(don't forget to save !)</span></header>
-        <section>
-            <button type="button" id="add-default-env" class="secondary">Create a new env</button>
-            <span class="section-instruction">
-                <ul>
-                    <li>Label size is 10 characters max</li>
-                    <li>Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</li>
-                </ul>
-            </span>
-            <form id="config-setter">
-                <div id="cs-container"></div>
-                <button type="submit" id="cs-form" class="secondary">Save settings</button>
-            </form>
-        </section>
-        <header>Save setting to JSON file</header>
-        <section>
-            <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export to JSON</a>
-        </section>
-    </main>
+    <div class="sidebar-container">
+        <h1>Environments settings</h1>
+        
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button type="button" class="tab-button" data-tab="retrieve">Retrieve Settings</button>
+            <button type="button" class="tab-button active" data-tab="change">Change Settings</button>
+            <button type="button" class="tab-button" data-tab="export">Export</button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="tab-content-container">
+            <!-- Retrieve Settings Tab -->
+            <div id="retrieve-tab" class="tab-content">
+                <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
+                <header class="instructions"
+                        title="The configuration will be added to the existing one. Must be a json file">
+                    Import settings from file
+                </header>
+                <section>
+                    <form id="config-retriever">
+                        <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json" />
+                        <button type="submit" id="cr-submit" class="secondary">Load and save</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Change Settings Tab -->
+            <div id="change-tab" class="tab-content active">
+                <header>Change settings <span class="tips">(don't forget to save !)</span></header>
+                <section>
+                    <button type="button" id="add-default-env" class="secondary">Create a new env</button>
+                    <span class="section-instruction">
+                        <ul>
+                            <li>Label size is 10 characters max</li>
+                            <li>Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</li>
+                        </ul>
+                    </span>
+                    <form id="config-setter">
+                        <div id="cs-container"></div>
+                        <button type="submit" id="cs-form" class="secondary">Save settings</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Export Tab -->
+            <div id="export-tab" class="tab-content">
+                <header>Export settings to JSON file</header>
+                <section>
+                    <p class="export-description">Download your current settings as a JSON file that can be imported later.</p>
+                    <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export to JSON</a>
+                </section>
+            </div>
+        </main>
+    </div>
 </body>
 <script src="settings.js"></script>
 

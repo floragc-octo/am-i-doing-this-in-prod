@@ -123,8 +123,38 @@ const retrieveSettingsFromFile = (event) => {
   }
 }
 
+// Tab Management
+const switchTab = (tabName) => {
+  // Remove active class from all tabs and contents
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.classList.remove('active')
+  })
+  document.querySelectorAll('.tab-content').forEach(content => {
+    content.classList.remove('active')
+  })
+  
+  // Add active class to selected tab and content
+  const selectedButton = document.querySelector(`[data-tab="${tabName}"]`)
+  const selectedContent = document.getElementById(`${tabName}-tab`)
+  
+  if (selectedButton) selectedButton.classList.add('active')
+  if (selectedContent) selectedContent.classList.add('active')
+}
+
+const initTabNavigation = () => {
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const tabName = button.getAttribute('data-tab')
+      switchTab(tabName)
+    })
+  })
+}
+
 // DOM event listeners
-document.addEventListener('DOMContentLoaded', loadSettingsFromStorageAndDisplay)
+document.addEventListener('DOMContentLoaded', () => {
+  loadSettingsFromStorageAndDisplay()
+  initTabNavigation()
+})
 document.querySelector('#config-setter').addEventListener('submit', saveSettings)
 document.querySelector('#config-retriever').addEventListener('submit', retrieveSettingsFromFile)
 document.querySelector('#add-env').addEventListener('click', addEnv)
