@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with border -->
+  <circle cx="32" cy="32" r="30" fill="#FFFFFF" stroke="#E1E8ED" stroke-width="4"/>
+  
+  <!-- Three colored dots representing environments -->
+  <!-- Dev environment (green/turquoise) -->
+  <circle cx="32" cy="15" r="7" fill="#16C79A"/>
+  
+  <!-- Staging environment (pink) -->
+  <circle cx="32" cy="32" r="7" fill="#FF6B9D"/>
+  
+  <!-- Prod environment (darker pink/red) -->
+  <circle cx="32" cy="49" r="7" fill="#DC3545"/>
+</svg>
