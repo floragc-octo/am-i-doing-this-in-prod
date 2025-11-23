@@ -81,7 +81,7 @@ If you need to know the structure, it may look like this :
 ```
 
 ### one click import for your project
-If you want to import easily the configuration for all your project you can use event for all user who already installed the extension.
+If you want to import easily the configuration for all your projects you can use an event for all user who already installed the extension.
 Only one people have to configure the extension then you can export the file and emit an `am_i_doing_this_in_prod_custom_event_import` on document.
 it may be like : 
 ```html
