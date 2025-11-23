@@ -72,20 +72,29 @@ const addEnv = (
   i = _numberOfElement(),
 ) => {
   const form = document.querySelector('#cs-container')
-  const env = createElement('fieldset', { style: `border: 2px solid ${color}; background-color: ${color}20` })
+  const env = createElement('fieldset', { style: `border-left: 3px solid ${color};` })
   const removeButton = createElement('button', { ...REMOVE_BUTTON, onclick: removeEnv })
-  const colorElement = _createInput({ ...COLOR_INPUT, value: color, i })
-  const siteElement = _createInput({ ...SITE_INPUT, value: site, i })
+  
+  // Create a container for label and color in the same row
+  const topRow = createElement('div', { className: 'env-row' })
   const labelElement = _createInput({ ...LABEL_INPUT, value: label, i })
-  siteElement.style = 'display: block;'
-  appendChildren(env, [labelElement, colorElement, siteElement, removeButton])
+  const colorElement = _createInput({ ...COLOR_INPUT, value: color, i })
+  appendChildren(topRow, [labelElement, colorElement])
+  
+  // Create site input
+  const siteElement = _createInput({ ...SITE_INPUT, value: site, i })
+  
+  appendChildren(env, [removeButton, topRow, siteElement])
   form.insertBefore(env, form.firstChild)
 }
 
 const addDefaultEnv = () => addEnv({ site: 'localhost', label: 'DEFAULT' })
 
-const getPageURL = async () => new Promise((resolve) =>
-  chrome.tabs.query({ active: true }, (tabs) => resolve(new URL(tabs[0].url).host)))
+const getPageURL = async () => new Promise((resolve) => {
+  chrome.tabs.query({ active: true }, (tabs) => {
+    resolve(new URL(tabs[0].url).host)
+  })
+})
 
 const setPageUrl = async () => { currentURL = await getPageURL() }
 
@@ -126,23 +135,23 @@ const retrieveSettingsFromFile = (event) => {
 // Tab Management
 const switchTab = (tabName) => {
   // Remove active class from all tabs and contents
-  document.querySelectorAll('.tab-button').forEach(button => {
+  document.querySelectorAll('.tab-button').forEach((button) => {
     button.classList.remove('active')
   })
-  document.querySelectorAll('.tab-content').forEach(content => {
+  document.querySelectorAll('.tab-content').forEach((content) => {
     content.classList.remove('active')
   })
-  
+
   // Add active class to selected tab and content
   const selectedButton = document.querySelector(`[data-tab="${tabName}"]`)
   const selectedContent = document.getElementById(`${tabName}-tab`)
-  
+
   if (selectedButton) selectedButton.classList.add('active')
   if (selectedContent) selectedContent.classList.add('active')
 }
 
 const initTabNavigation = () => {
-  document.querySelectorAll('.tab-button').forEach(button => {
+  document.querySelectorAll('.tab-button').forEach((button) => {
     button.addEventListener('click', () => {
       const tabName = button.getAttribute('data-tab')
       switchTab(tabName)

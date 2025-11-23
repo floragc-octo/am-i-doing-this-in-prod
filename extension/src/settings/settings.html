@@ -22,11 +22,7 @@
         <main class="tab-content-container">
             <!-- Retrieve Settings Tab -->
             <div id="retrieve-tab" class="tab-content">
-                <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
-                <header class="instructions"
-                        title="The configuration will be added to the existing one. Must be a json file">
-                    Import settings from file
-                </header>
+                <header>Import settings from file</header>
                 <section>
                     <form id="config-retriever">
                         <input aria-label="configuration json file" id="cr-file" type="file" accept="application/JSON, .json" />
@@ -37,8 +33,9 @@
 
             <!-- Change Settings Tab -->
             <div id="change-tab" class="tab-content active">
-                <header>Change settings <span class="tips">(don't forget to save !)</span></header>
+                <header>Manage environments <span class="tips">(don't forget to save)</span></header>
                 <section>
+                    <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
                     <button type="button" id="add-default-env" class="secondary">Create a new env</button>
                     <span class="section-instruction">
                         <ul>
