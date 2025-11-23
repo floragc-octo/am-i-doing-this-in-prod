@@ -59,6 +59,21 @@
                     <p class="export-description">Download your current settings as a JSON file that can be imported later.</p>
                     <a role="button" id="cs-export" href="" tabindex="0" class="secondary">Export to JSON</a>
                 </section>
+                
+                <header>Export to your documentation</header>
+                <section>
+                    <p class="export-description">Generate HTML code to share your environment configuration with your team. Simply paste this code in your project's documentation.</p>
+                    <button type="button" id="generate-doc-snippet" class="primary">Generate Documentation Snippet</button>
+                    
+                    <div id="doc-snippet-container" style="display: none;">
+                        <p class="export-description"><strong>Copy and paste this code in your project's documentation:</strong></p>
+                        <div class="code-block-container">
+                            <pre id="doc-snippet-code" class="code-block"></pre>
+                            <button type="button" id="copy-snippet" class="secondary">Copy to Clipboard</button>
+                        </div>
+                        <p class="export-description tips">Team members can click the "Import environnements" button in your documentation to automatically import the configuration.</p>
+                    </div>
+                </section>
             </div>
         </main>
     </div>

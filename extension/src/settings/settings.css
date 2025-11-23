@@ -358,6 +358,55 @@ fieldset span:last-of-type {
   margin-top: 0.5rem;
 }
 
+/* Code snippet styles */
+.code-block-container {
+  background-color: #f8f9fa;
+  border: 1px solid #e1e8ed;
+  border-radius: 6px;
+  margin: 1rem 0;
+  padding: 1rem;
+  position: relative;
+}
+
+.code-block {
+  background-color: #282c34;
+  border-radius: 4px;
+  color: #abb2bf;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  max-height: 400px;
+  overflow: auto;
+  padding: 1rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code-block::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.code-block::-webkit-scrollbar-track {
+  background: #1e2127;
+  border-radius: 4px;
+}
+
+.code-block::-webkit-scrollbar-thumb {
+  background: #4b5263;
+  border-radius: 4px;
+}
+
+.code-block::-webkit-scrollbar-thumb:hover {
+  background: #5c6370;
+}
+
+#copy-snippet {
+  margin: 0;
+  width: 100%;
+}
+
 /* Responsive improvements */
 @media (max-width: 400px) {
   h1 {
@@ -380,5 +429,10 @@ fieldset span:last-of-type {
   
   section {
     padding: 1rem;
+  }
+  
+  .code-block {
+    font-size: 0.7rem;
+    padding: 0.75rem;
   }
 }
