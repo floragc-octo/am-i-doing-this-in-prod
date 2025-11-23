@@ -30,7 +30,7 @@
             "48": "icons/icon-48.png",
             "64": "icons/icon-64.png"
         },
-        "default_title": "didactic-barnacle",
+        "default_title": "am-i-doing-this-in-prod",
         "default_popup": "src/settings/settings.html"
     },
     "content_scripts": [
