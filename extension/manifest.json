@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Am I doing this in Prod ?",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "Flora Guy-Coichard, Simon Belbeoch",
     "description": "Browser's extensions (Chrome and Firefox based) to display dev and misc environments",
     "browser_specific_settings": {
