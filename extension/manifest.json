@@ -31,7 +31,7 @@
     },
     "sidebar_action": {
         "default_panel": "src/settings/settings.html",
-        "default_title": "Environments settings"
+        "default_title": "Am I doing this in Prod ?"
     },
     "side_panel": {
         "default_path": "src/settings/settings.html"

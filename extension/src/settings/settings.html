@@ -13,7 +13,7 @@
         
         <!-- Tab Navigation -->
         <nav class="tabs">
-            <button type="button" class="tab-button" data-tab="retrieve">Retrieve Settings</button>
+            <button type="button" class="tab-button" data-tab="retrieve">Import</button>
             <button type="button" class="tab-button active" data-tab="change">Change Settings</button>
             <button type="button" class="tab-button" data-tab="export">Export</button>
         </nav>
@@ -35,12 +35,14 @@
             <div id="change-tab" class="tab-content active">
                 <header>Manage environments <span class="tips">(don't forget to save)</span></header>
                 <section>
-                    <button type="button" id="add-env" class="primary call-to-action">Add current page</button>
-                    <button type="button" id="add-default-env" class="secondary">Create a new env</button>
+                    <div class="button-group">
+                        <button type="button" id="add-env" class="primary">Add current page</button>
+                        <button type="button" id="add-default-env" class="secondary">Add page</button>
+                    </div>
                     <span class="section-instruction">
                         <ul>
-                            <li>Label size is 10 characters max</li>
-                            <li>Site URL is 50 characters max and can be a part of the URL (eg. without http etc.)</li>
+                            <li>Label size is 10 characters max.</li>
+                            <li>Site URL is 50 characters max and can be a part of the URL.</li>
                         </ul>
                     </span>
                     <form id="config-setter">
