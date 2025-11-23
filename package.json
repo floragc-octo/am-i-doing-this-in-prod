@@ -1,6 +1,6 @@
 {
   "name": "didactic-barnacle",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Browsers' extension to highlight dev environment",
   "scripts": {
     "build:chrome": "zip -r extension.zip ./extension/*",
