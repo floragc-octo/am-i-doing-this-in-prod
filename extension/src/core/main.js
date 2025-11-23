@@ -111,8 +111,42 @@ const init = (config) => {
 }
 
 const importData = (event) => {
-  console.log('to import >')
-  console.log(event.detail)
+  const itemsToImport = event.detail
+
+  // Retrieve current configuration
+  chrome.storage.sync.get({ config: [] }, ({ config }) => {
+    const existingSites = new Set(config.map((item) => item.site))
+
+    // Filter out items that already exist (based on site URL)
+    const newItems = itemsToImport.filter((item) => !existingSites.has(item.site))
+
+    if (newItems.length > 0) {
+      // Generate new IDs for new items (continue from the last ID)
+      const maxId = config.length > 0
+        ? Math.max(...config.map((item) => parseInt(item.id.substring(1))))
+        : -1
+
+      const itemsWithIds = newItems.map((item, index) => ({
+        ...item,
+        id: `a${maxId + 1 + index}`,
+      }))
+
+      // Merge existing config with new items
+      const updatedConfig = [...config, ...itemsWithIds]
+
+      // Save the updated configuration
+      chrome.storage.sync.set({ config: updatedConfig }, () => {
+        console.log(`Imported ${newItems.length} new item(s)`)
+
+        // Update the saved config and refresh the ribbon
+        savedConfig = { detail: updatedConfig }
+        initCSS(savedConfig)
+        addOrRemoveRibbon(savedConfig)
+      })
+    } else {
+      console.log('No new items to import (all sites already exist)')
+    }
+  })
 }
 document.addEventListener('am_i_doing_this_in_prod_custom_event_import', importData)
 document.addEventListener('plugin_loaded', init)
