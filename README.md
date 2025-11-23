@@ -87,9 +87,10 @@ it may be like :
 ```html
 <script type="text/javascript">
     const exportedConfig = [
-        {"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-dev", "label":"DEV","color":"#cccccc","id":"a0"},
-        {"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-qua","label":"QUA","color":"#00ff4c","id":"a1"},
-        {"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-prod","label":"PROD","color":"#ff0000","id":"a2"}]
+			{"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-dev", "label":"DEV","color":"#cccccc","id":"a0"},
+			{"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-qua","label":"QUA","color":"#00ff4c","id":"a1"},
+			{"site":"https://dashboard.scalingo.com/apps/osc-fr1/project-prod","label":"PROD","color":"#ff0000","id":"a2"}
+        ]
     const importConfig = () => document.dispatchEvent(new CustomEvent('am_i_doing_this_in_prod_custom_event_import', { detail: exportedConfig }))
 </script>
 <html>
