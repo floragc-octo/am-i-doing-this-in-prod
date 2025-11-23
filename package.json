@@ -1,6 +1,6 @@
 {
   "name": "didactic-barnacle",
-  "version": "0.2",
+  "version": "0.2.1",
   "description": "Browsers' extension to highlight dev environment",
   "scripts": {
     "build:chrome": "zip -r extension.zip ./extension/*",
@@ -27,11 +27,11 @@
   },
   "homepage": "https://github.com/floragc-octo/didactic-barnacle#readme",
   "devDependencies": {
-    "eslint": "^7.16.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "stylelint": "^13.9.0",
-    "stylelint-config-standard": "^20.0.0",
-    "web-ext": "^5.4.0"
+    "eslint": "^9.39.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "stylelint": "^16.26.0",
+    "stylelint-config-standard": "^39.0.1",
+    "web-ext": "^9.2.0"
   }
 }
