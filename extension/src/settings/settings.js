@@ -112,6 +112,53 @@ const updateExportLink = () => {
   link.download = exportFileDefaultName
 }
 
+const generateDocSnippet = () => {
+  const config = generateConfiguration()
+  const configJson = JSON.stringify(config, null, 2)
+  
+  const snippet = `<script type="text/javascript">
+    const exportedConfig = ${configJson}
+    const importConfig = () => document.dispatchEvent(new CustomEvent('am_i_doing_this_in_prod_custom_event_import', { detail: exportedConfig }))
+</script>
+<html>
+    <body>
+        <h1>Documentation of your project</h1>
+        <button onclick="importConfig()">Import environnements</button>
+    </body>
+</html>`
+  
+  const codeBlock = document.querySelector('#doc-snippet-code')
+  const container = document.querySelector('#doc-snippet-container')
+  
+  codeBlock.textContent = snippet
+  container.style.display = 'block'
+}
+
+const copySnippetToClipboard = () => {
+  const codeBlock = document.querySelector('#doc-snippet-code')
+  const textToCopy = codeBlock.textContent
+  
+  navigator.clipboard.writeText(textToCopy).then(() => {
+    const button = document.querySelector('#copy-snippet')
+    const originalText = button.textContent
+    
+    button.textContent = '✓ Copied!'
+    button.style.backgroundColor = '#16C79A'
+    button.style.color = '#ffffff'
+    button.style.borderColor = '#16C79A'
+    
+    setTimeout(() => {
+      button.textContent = originalText
+      button.style.backgroundColor = ''
+      button.style.color = ''
+      button.style.borderColor = ''
+    }, 2000)
+  }).catch((err) => {
+    console.error('Failed to copy text: ', err)
+    alert('Failed to copy to clipboard. Please copy manually.')
+  })
+}
+
 const addJsonSettingToDOM = (textFile) => {
   const values = JSON.parse(textFile)
   values.forEach((value) => addEnv(value))
@@ -169,5 +216,7 @@ document.querySelector('#config-retriever').addEventListener('submit', retrieveS
 document.querySelector('#add-env').addEventListener('click', addEnv)
 document.querySelector('#add-default-env').addEventListener('click', addDefaultEnv)
 document.querySelector('#cs-export').addEventListener('click', updateExportLink)
+document.querySelector('#generate-doc-snippet').addEventListener('click', generateDocSnippet)
+document.querySelector('#copy-snippet').addEventListener('click', copySnippetToClipboard)
 
 setPageUrl()
